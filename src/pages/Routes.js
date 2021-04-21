@@ -17,7 +17,9 @@ import Cdetails from './Cdetails';
 import Addroute from './Addroute';
 import Bconfirm from './Bconfirm';
 import Feedback from './Feedback';
-import Adminhome from './Adminhome';
+import Adminhome from './admin/Adminhome';
+import Customerhome from "./customer/Customerhome";
+import Companyhome from "./company/Companyhome";
 
 export default function Routes() {
   return (
@@ -78,9 +80,12 @@ export default function Routes() {
         <Route exact path="/Feedback">
             <Feedback />
         </Route>
-        {/* <Route exact path="/admin/Index">
-            <Index />
-        </Route> */}
+        <Route exact path="/Companyhome">
+            <Companyhome />
+        </Route>
+        <Route exact path="/Customerhome">
+            <Customerhome />
+        </Route>
         <Route exact path="/Adminhome">
             <Adminhome />
         </Route>

@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const bcrypt = require("bcrypt");
 
 const app = express();
 const cors = require("cors");
@@ -21,7 +22,10 @@ app.use(bodyParser.json());
 // app.use('/api', loginRouter);
 
 
-let Login = require("./models/login");
+const Login = require("./models/login");
+let Cprofile = require("./models/cprofile");
+let Nroute = require("./models/nroute");
+let Nbooking = require("./models/nbooking")
 
 mongoose.connect("mongodb://127.0.0.1:27017/project", {
     useUnifiedTopology: true, 
@@ -78,17 +82,87 @@ app.post('/send-data',(req,res)=>{
   
 })
 
-app.post('/api/signup',(req,res)=>{
+app.post('/api/signup',async (req,resp)=>{
+  const salt = await bcrypt.genSalt(10);
+  const securepassword = await bcrypt.hash(req.body.password, salt);
   const login = new Login({
       name:req.body.name,
       email:req.body.email,
       phone:req.body.phone,
-      password:req.body.passord,
+      password: securepassword,
+      state:req.body.state,
       city:req.body.city,
-      state:req.body.city,
-      usetype:req.body.city
+      usetype:req.body.usetype
   })
   login.save()
+  .then(data=>{
+      console.log(data)
+      // res.send(data)
+      resp.status(200).json({ message: "user registered"});
+  })
+  .catch((error) => {
+    resp.status(400).json({ error: error, message: " error " });
+  });
+});
+
+app.post("/api/signin", async (req, resp) => {
+  try {
+    Login
+      .findOne({ email: req.body.email })
+      .then((Login) => {
+        if (Login) {
+          bcrypt.compare(
+            req.body.password,
+            Login.password,
+            (err, result) => {
+              if (err) {
+                resp.status(200).json({ error: err, message: "server error" });
+              }
+              if (result) {
+                resp.status(200).json({
+                  message: "validuser",
+                  email: req.body.email,
+                  data:Login,
+                });
+                console.log("success login");
+              }
+              if (!result) {
+                resp.status(200).json({
+                  message: "invalid password",
+                });
+                console.log("invalid password");
+              }
+            }
+          );
+        } else {
+          resp.status(200).json({
+            message: "invalid Email",
+          });
+          console.log("invalid Email");
+        }
+      });
+  } catch (error) {
+    console.log("email error");
+    return resp
+      .status(400)
+      .json({ error: err, message: "email and password needed" });
+  }
+});
+
+
+app.post('/api/cprofile',(req,res)=>{
+  const cprofile = new Cprofile({
+      name:req.body.name,
+      email:req.body.email,
+      site:req.body.site,
+      address:req.body.address,
+      phone:req.body.phone,
+      rid:req.body.rid,
+      acc:req.body.acc,
+      btype:req.body.btype,
+      busno:req.body.busno
+  })
+  cprofile.save()
   .then(data=>{
       console.log(data)
       res.send(data)
@@ -98,6 +172,48 @@ app.post('/api/signup',(req,res)=>{
   
 })
 
+app.post('/api/newroute',(req,res)=>{
+  const nroute = new Nroute({
+    source:req.body.source,
+    destination:req.body.destination,
+    type:req.body.type,
+    time:req.body.time,
+    fare:req.body.fare
+  })
+  nroute.save()
+  .then(data=>{
+      console.log(data)
+      res.send(data)
+  }).catch(err=>{
+      console.log(err)
+  })
+  
+})
+
+app.post('/api/newbooking',(req,res)=>{
+  const nbooking = new Nbooking({
+    email:req.body.email,
+    phone:req.body.phone,
+    source:req.body.source,
+    destination:req.body.destination,
+    date:req.body.date,
+    time:req.body.time,
+    no:req.body.no,
+    accomodation:req.body.accomodation,
+    seatno:req.body.seatno,
+    name:req.body.name,
+    sex:req.body.sex,
+    age:req.body.age
+  })
+  nbooking.save()
+  .then(data=>{
+      console.log(data)
+      res.send(data)
+  }).catch(err=>{
+      console.log(err)
+  })
+  
+})
 // Serve the static files from the React app
 // app.use(express.static(path.join(__dirname, 'client/build')));
 

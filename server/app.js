@@ -60,7 +60,27 @@ app.post('/api/signup',(req,res)=>{
      
 })
 
-
+app.post('/api/cprofile',(req,res)=>{
+    const cprofile = new Cprofile({
+        name:req.body.name,
+        email:req.body.email,
+        site:req.body.site,
+        address:req.body.address,
+        phone:req.body.phone,
+        rid:req.body.rid,
+        acc:req.body.acc,
+        btype:req.body.btype,
+        busno:req.body.busno
+    })
+    cprofile.save()
+    .then(data=>{
+        console.log(data)
+        res.send(data)
+    }).catch(err=>{
+        console.log(err)
+    })
+    
+  })
 app.post('/send-data',(req,res)=>{
     const user = new User({
         name:req.body.name,

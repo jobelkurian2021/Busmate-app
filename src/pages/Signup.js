@@ -38,7 +38,7 @@ export default function Signup() {
     usetype: ""    
   };
 
-  const onSubmit = (values, {setSubmitting,resetForm}) => {
+  const onSubmit = async (values, {setSubmitting,resetForm}) => {
     
     try{
       axios.post(`http://localhost:3500/api/signup`,values).then(resp=>{
@@ -157,7 +157,7 @@ export default function Signup() {
 <Form.Group size="lg" controlId="phone">
   <Form.Label>Phone No:</Form.Label>
   <Form.Control
-    type="tel"
+    type="number"
     name="phone"
     placeholder="Enter phone"
     onBlur={formik.handleBlur}
@@ -323,7 +323,7 @@ export default function Signup() {
       ""
     )}
   </Form.Group>
-  <Form.Group size="lg" controlId="type">
+  <Form.Group size="lg" controlId="usetype">
   <Form.Label>User Type:</Form.Label>
   <Form.Control  as="select"
                 name="usetype"

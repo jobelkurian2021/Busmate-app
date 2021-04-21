@@ -10,29 +10,42 @@ toast.configure()
 
 export default function Cprofile() {
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [site, setSite] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [license, setlicense] = useState("");
-  const [category, setCategory] = useState("");
-  const [type, setType] = useState("");
-  const [route, setRoute] = useState("");
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [site, setSite] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [license, setlicense] = useState("");
+  // const [category, setCategory] = useState("");
+  // const [type, setType] = useState("");
+  // const [route, setRoute] = useState("");
 
 
   // function handleSubmit(event) {
   //   event.preventDefault();
   // }
+
+  const [usetype, setusetype] = useState(false);
+
+  const userdropdown = (e) => {
+    if (e.target.value === "seater") {
+      setusetype(true);
+      
+    } else {
+      setusetype(false);
+    }
+  };
   const initialValues = {
     name: "",
     email: "",
+    site: "",
+    address: "",
     phone: "",
-    password: "",
-    city: "",
-    state: "",
-    usetype: ""    
-  };
+    rid: "",
+    acc: ""  ,  
+    btype: "",
+    busno: ""
+    };
   const onSubmit = (values, {setSubmitting,resetForm}) => {
     
     try{
@@ -68,8 +81,11 @@ export default function Cprofile() {
     }
   };
   const validationSchema = Yup.object({
-    name: Yup.string().required("Required"),
-    email: Yup.string().email("Invalid email format").required("Required"),
+    name: Yup.string()
+    .min(5, "Name is to Short")
+    .max(50, "Name is to Long!")
+    .required("Name is Required"),
+    email: Yup.string().email("Invalid email format").required("Company Email address is Required"),
     password: Yup.string()
       .required("Please Enter your password")
       .matches(
@@ -84,11 +100,30 @@ export default function Cprofile() {
       )
       .min(10, "please enter 10 digit No")
       .max(10, "please enter 10 digit No"),
-    city: Yup.string()
+      address: Yup.string()
+      .min(6, "Address is to Short")
+      .max(50, "Address is to Long!")
+      .required("Address required"),
+    site: Yup.string()
       .min(2, "Too Short!")
       .max(50, "Too Long!")
-      .required("city is Required"),
-    usetype: Yup.string().required("select user type"),
+      .required("website is Required"),
+    rid: Yup.string()
+    .min(2, "Too Short!")
+    .max(5, "Too Long!")
+    .required("Route id is Required"),
+    acc: Yup.string()
+    // .min(3, "Too Short!")
+    // .max(20, "Too Long!")
+    .required("select accomodation type"),
+    btype: Yup.string()
+    .min(3, "Too Short!")
+    .max(20, "Too Long!")
+    .required("select bus type"),
+    busno: Yup.string()
+    .min(3, "Too Short!")
+    .max(20, "Too Long!")
+    .required("select bus license no"),
   });
 
   const formik = useFormik({
@@ -119,7 +154,7 @@ export default function Cprofile() {
         />
         {formik.errors.cname ? (
           <div className="invalid-feedback cname">
-            {formik.errors.cname}
+            {formik.errors.name}
           </div>
         ) : (
           ""
@@ -148,27 +183,57 @@ export default function Cprofile() {
             ""
           )}
         </Form.Group>
-        <Form.Group size="lg" controlId="email">
+        <Form.Group size="lg" controlId="site">
           <Form.Label>Company Website:</Form.Label>
           <Form.Control
-            type="number"
-            value={site}
-            onChange={(e) => setSite(e.target.value)}
-          />
+             type="text"  
+             name="site"
+             placeholder="Enter website"
+             onChange={formik.handleChange}
+             onBlur={formik.handleBlur}
+             value={formik.values.site}
+             className={
+               formik.errors.site && formik.touched.site
+                 ? "form-control is-invalid site"
+                 : "site"
+             }
+           />
+           {formik.errors.site ? (
+             <div className="invalid-feedback site">
+               {formik.errors.site}
+             </div>
+           ) : (
+             ""
+           )}
         </Form.Group> 
-        <Form.Group size="lg" controlId="email">
+        <Form.Group size="lg" controlId="address">
           <Form.Label>Company Address:</Form.Label>
           <Form.Control
-            type="number"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            type="text"
+            name="address"
+            placeholder="Enter address"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.address}
+            className={
+              formik.errors.address && formik.touched.address
+                ? "form-control is-invalid address"
+                : "address"
+            }
           />
+          {formik.errors.address ? (
+            <div className="invalid-feedback address">
+              {formik.errors.address}
+            </div>
+          ) : (
+            ""
+          )}
         </Form.Group> 
-        <Form.Group size="lg" controlId="email">
+        <Form.Group size="lg" controlId="phone">
           <Form.Label>Company Phone:</Form.Label>
           <Form.Control
             type="tel"
-            name="phone"
+            name="phone" 
             placeholder="Enter phone"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
@@ -187,51 +252,97 @@ export default function Cprofile() {
             ""
           )}
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Route Id:</Form.Label>
+        <Form.Group size="lg" controlId="rid">
+          <Form.Label>Route Id:</Form.Label> 
           <Form.Control
-            type="password"
-            value={route}
-            onChange={(e) => setRoute(e.target.value)}
+            type="number"
+            name="rid"
+            placeholder="Enter route id"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.rid}
+            className={
+              formik.errors.rid && formik.touched.rid
+                ? "form-control is-invalid rid"
+                : "rid"
+            }
           />
+          {formik.errors.rid ? (
+            <div className="invalid-feedback rid">
+              {formik.errors.rid}
+            </div>
+          ) : (
+            ""
+          )}
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
+        <Form.Group size="lg" controlId="acc">
           <Form.Label>Accomodation Type:</Form.Label>
-          <Form.Control
-            type="password"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
+          <Form.Control as="select"
+          name="acc"
+          onClick={userdropdown}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          value={formik.values.acc}
+          className={
+            formik.errors.acc && formik.touched.acc
+              ? "form-control is-invalid acc"
+              : "acc"
+          }
+          >
+          <option value="seater">Seater</option>
+          <option value="sleeper">sleeper</option>
+          <option value="AC">AC Volvo</option>
+         </Form.Control>
         </Form.Group>
-        <Form.Group size="lg" controlId="name">
+        <Form.Group size="lg" controlId="btype">
           <Form.Label>Bus Type:</Form.Label>
           <Form.Control
             type="text"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
+            name="btype"
+            placeholder="Enter Bus Type"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.btype}
+            className={
+              formik.errors.btype && formik.touched.btype
+                ? "form-control is-invalid btype"
+                : "btype"
+            }
           />
+          {formik.errors.btype ? (
+            <div className="invalid-feedback btype">
+              {formik.errors.btype}
+            </div>
+          ) : (
+            ""
+          )} 
           </Form.Group>
-          <Form.Group size="lg" controlId="name">
+          <Form.Group size="lg" controlId="busno">
           <Form.Label>Bus License No:</Form.Label>
           <Form.Control
             type="text"
-            value={license}
-            onChange={(e) => setlicense(e.target.value)}
+            name="busno"
+            placeholder="Enter Bus License No"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.busno}
+            className={
+              formik.errors.busno && formik.touched.busno
+                ? "form-control is-invalid busno"
+                : "busno"
+            }
           />
+          {formik.errors.busno ? (
+            <div className="invalid-feedback busno">
+              {formik.errors.busno}
+            </div>
+          ) : (
+            ""
+          )}
           </Form.Group>
-          <Form.Group size="lg" controlId="name">
-          <Form.Label>User Type:</Form.Label>
-          <Form.Control
-            type="text"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-          />
-          </Form.Group>
-        <Button block size="lg" type="submit" 
-        // disabled={!validateForm()}
-        >
-          Update
-        </Button>
+          <Button block size="lg" type="submit" >
+  Create
+</Button>
       </Form>
     </div>
   );

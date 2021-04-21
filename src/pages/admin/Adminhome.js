@@ -1,5 +1,5 @@
 import React from "react";
-import './css/backup/app1.css';
+import '../css/backup/app1.css';
 export default function Adminhome() {
     return (
         <div className="wrapper1">

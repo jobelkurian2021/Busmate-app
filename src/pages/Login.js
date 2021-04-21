@@ -18,21 +18,25 @@ export default function Login() {
 
   const onSubmit = async (values) => {
     try{
-      axios.post(`http://localhost:3500/app/signin`, values).then(resp=>{
+      axios.post(`http://localhost:3500/api/signin`, values).then(resp=>{
       console.log(resp)
      
         if(resp.data.message==='validuser') {
+              window.location = "/customerhome";
+
           if(resp.data.data.status==="ACTIVE " ) { 
+            window.location = "/adminhome";
+
             if(resp.data.data.usetype==="Admin")
             {
-                window.location = "/home";
+                window.location = "/adminhome";
                 localStorage.setItem('myemail', resp.data.email);
                 localStorage.setItem('loginid', resp.data.data._id);
                 localStorage.setItem('role', resp.data.data.usetype);
             }
-            if(resp.data.data.usetype==="user")
+            if(resp.data.data.usetype==="User")
             {
-             window.location = "/userhome";
+             window.location = "/customerhome";
              localStorage.setItem('myemail', resp.data.email);
               localStorage.setItem('loginid', resp.data.data._id);
              localStorage.setItem('role', resp.data.data.usetype);
@@ -45,8 +49,9 @@ export default function Login() {
              localStorage.setItem('role', resp.data.data.usetype);
             }
           } 
-             if(resp.data.data.status!=="ACTIVE "){
-              toast.error(`your blocked please contacat admin`,{
+             if(resp.data.data.status!=="ACTIVE"){
+              // window.location = "/customerhome";
+              toast.error(`your blocked please contact admin`,{
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: true,
