@@ -1,0 +1,34 @@
+import React,{useEffect,useState} from 'react';
+import Table from '../../components/Table/Table'
+import {Container,Row,Col} from "react-bootstrap";
+import axios from "axios";
+import AdminNavbar from "./adminnavbar";
+
+
+
+import  { COLUMN } from './Column';
+
+export default function Users() {
+
+  const [DATA,setData] = useState([])
+
+return (
+    <div>
+		<AdminNavbar />
+
+  <Container>
+  <Row>
+  <Col >
+  {DATA!==""?
+           <Table  COLUMN={COLUMN} DATA={DATA} />
+           :<h1>Loading....</h1> 
+      }
+  </Col>
+  </Row>
+ 
+  </Container>
+  
+    </div>
+)
+}
+

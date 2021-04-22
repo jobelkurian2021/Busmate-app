@@ -22,14 +22,12 @@ export default function Login() {
       console.log(resp)
      
         if(resp.data.message==='validuser') {
-              window.location = "/customerhome";
 
-          if(resp.data.data.status==="ACTIVE " ) { 
-            window.location = "/adminhome";
+          if(resp.data.data.status==="ACTIVE") { 
 
             if(resp.data.data.usetype==="Admin")
             {
-                window.location = "/adminhome";
+                window.location = "/admin/home";
                 localStorage.setItem('myemail', resp.data.email);
                 localStorage.setItem('loginid', resp.data.data._id);
                 localStorage.setItem('role', resp.data.data.usetype);
@@ -41,7 +39,7 @@ export default function Login() {
               localStorage.setItem('loginid', resp.data.data._id);
              localStorage.setItem('role', resp.data.data.usetype);
             }
-            if(resp.data.data.usetype==="company")
+            if(resp.data.data.usetype==="Company")
             {
              window.location = "/companyhome";
              localStorage.setItem('myemail', resp.data.email);
@@ -50,7 +48,6 @@ export default function Login() {
             }
           } 
              if(resp.data.data.status!=="ACTIVE"){
-              // window.location = "/customerhome";
               toast.error(`your blocked please contact admin`,{
                 position: "bottom-right",
                 autoClose: 5000,

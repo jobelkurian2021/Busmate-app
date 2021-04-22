@@ -20,6 +20,7 @@ import Feedback from './Feedback';
 import Adminhome from './admin/Adminhome';
 import Customerhome from "./customer/Customerhome";
 import Companyhome from "./company/Companyhome";
+import Users from "./admin/Users";
 
 export default function Routes() {
   return (
@@ -88,6 +89,12 @@ export default function Routes() {
         </Route>
         <Route exact path="/Adminhome">
             <Adminhome />
+        </Route>
+        <Route exact path="/Admin/home">
+            <Adminhome />
+        </Route>
+        <Route exact path="/Admin/users">
+            <Users />
         </Route>
         <Route>
             <NotFound />
