@@ -8,10 +8,6 @@ import Register from "./Register";
 import About from "./About";
 import Signup from "./Signup";
 import Cprofile from "./Cprofile";
-// import Index from "./admin/Index";
-import Logina from './Login/Logina';  
-import Reg from './Login/Reg';  
-import Dashboard from './Login/Dashboard';
 import Booking from './Booking';
 import Cdetails from './Cdetails';
 import Addroute from './Addroute';
@@ -21,6 +17,7 @@ import Adminhome from './admin/Adminhome';
 import Customerhome from "./customer/Customerhome";
 import Companyhome from "./company/Companyhome";
 import Users from "./admin/Users";
+import Profile from "./Profile";
 
 export default function Routes() {
   return (
@@ -50,9 +47,6 @@ export default function Routes() {
         <Route exact path="/login">
             <Login />
         </Route>
-        <Route exact path='/Logina' component={Logina} />    
-
-          <Route path='/Signupa' component={Reg} /> 
 
         <Route exact path="/register">
             <Register />
@@ -95,6 +89,9 @@ export default function Routes() {
         </Route>
         <Route exact path="/Admin/users">
             <Users />
+        </Route>
+        <Route exact path="/Profile">
+            <Profile />
         </Route>
         <Route>
             <NotFound />

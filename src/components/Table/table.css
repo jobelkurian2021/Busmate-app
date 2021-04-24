@@ -9,7 +9,7 @@ table {
     padding: 8px;
   }
   
-  table tr:nth-child(even){background-color: rgb(29, 8, 8);}
+  table tr:nth-child(even){background-color: #f2f2f2;}
   
   table tr:hover {background-color:  #f2f2f2;}
   

@@ -12,6 +12,24 @@ export default function Users() {
 
   const [DATA,setData] = useState([])
 
+  
+  useEffect( () => {
+    try {
+  async function userdatafetch () {
+    await axios({
+        method: 'Get',
+        url: 'http://localhost:3500/api/userdata'
+      }).then(resp=>{   
+        const response=resp.data;
+        setData(response)
+      });
+   }
+   userdatafetch();
+    } catch (e) {
+        console.error(e);
+    }
+  }, []);
+
 return (
     <div>
 		<AdminNavbar />

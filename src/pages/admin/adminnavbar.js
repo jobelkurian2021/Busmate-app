@@ -13,7 +13,7 @@ export default function adminnavbar() {
  <Navbar bg="dark" variant="dark">
         <Nav.Link href="/adminhome"><Navbar.Brand>Busmate Admin Panel</Navbar.Brand></Nav.Link>
         <Nav className="mr-auto" >
-          <Nav.Link href="/adminhome">profile</Nav.Link>
+          <Nav.Link href="/Profile">profile</Nav.Link>
          <Nav.Link className="navbar-right" href="/admin/users">users &nbsp;&nbsp;</Nav.Link>
           <NavDropdown title="&nbsp;&nbsp; Manage" id="basic-nav-dropdown">
               <NavDropdown.Item href="/addroute">Add New Routes</NavDropdown.Item>

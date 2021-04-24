@@ -14,10 +14,10 @@ export const COLUMN=[
         Header:'Phone',
         accessor:'phone'
     },
-    {
-        Header:'Address',
-        accessor:'address'
-    },
+    // {
+    //     Header:'Address',
+    //     accessor:'address'
+    // },
     {
         Header:'usertype',
         accessor:'usetype'

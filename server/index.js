@@ -214,6 +214,125 @@ app.post('/api/newbooking',(req,res)=>{
   })
   
 })
+
+
+router.get("/api/userdata", async (req, resp) => {
+  try{
+    Login.find({})
+  .exec((err,usersdata)=>{
+     if(err){
+      req.json( {message : "No users found"});
+      resp.redirect("/home");
+     }else{
+         resp.json(usersdata);
+     }
+  });
+  }
+  catch(error){
+      return resp
+      .status(400)
+      .json({ error: err, message: "Error fetching data" });
+  }
+});
+
+
+router.put("/api/profileActivate", async (req, resp) => {
+  try {
+      console.log(req.body)
+      const query = { "email": req.body.email };
+      // Set some fields in that document
+      const update = {
+        "$set": {
+          "status":req.body.action
+        }
+      };
+      // Return the updated document instead of the original document
+      const options = { returnNewDocument: true };
+      return Login.findOneAndUpdate(query, update, options)
+        .then(updatedDocument => {
+          if(updatedDocument) {
+            resp.status(200).json({ message: `Successfullly ${req.body.action}`});
+
+            console.log(`Successfully updated document: ${updatedDocument}.`)
+            resp.redirect("/admin/users");
+          } else {
+            resp.status(200).json({ message: `Unsuccessfullly ${req.body.action}`});
+            console.log("No user found")
+          }
+          return updatedDocument
+        })
+        .catch(err => console.error(`Failed to find and update document: ${err}`))
+      
+  } catch (error) {
+    return resp
+      .status(400)
+      .json({ error: error, message: "Error updating" });
+  }
+});
+
+router.post("/api/profileGet", async (req, resp) => {
+  try{
+  Login.findOne({email:req.body.email})
+  .exec((err,userdata)=>{
+     if(err){
+      req.json( {message : "user not found",});
+      resp.redirect("/");
+     }else{
+         resp.json(userdata);
+     }
+  });
+  }
+  catch(error){
+      return resp
+      .status(400)
+      .json({ error: err, message: "Error fetching data" });
+  }
+});
+router.put("/api/profileEdit", async (req, resp) => {
+  try {
+      console.log(req.body)
+  if(req.body.password !== "")
+  {
+      salt = await bcrypt.genSalt(10);
+      passvalue = await bcrypt.hash(req.body.password, salt);
+  }
+ else if(req.body.password ==="")
+   {
+       passvalue=req.body.hash;
+    }
+
+      const query = { "email": req.body.email };
+      // Set some fields in that document
+      const update = {
+        "$set": {
+          "name": req.body.name,
+          "phone": req.body.phone,
+          "password": passvalue,
+          "city": req.body.city,          
+        }
+      };
+      // Return the updated document instead of the original document
+      const options = { returnNewDocument: true };
+      return Login.findOneAndUpdate(query, update, options)
+        .then(updatedDocument => {
+          if(updatedDocument) {
+            resp.status(200).json({ message: "profile updated"});
+
+            console.log(`Successfully updated document: ${updatedDocument}.`)
+          } else {
+            resp.status(200).json({ message: "profile not updated"});
+            console.log("No document matches the provided email.")
+          }
+          return updatedDocument
+        })
+        .catch(err => console.error(`Failed to find and update document: ${err}`))
+      
+  } catch (error) {
+    return resp
+      .status(400)
+      .json({ error: error, message: "Error updating" });
+  }
+});
 // Serve the static files from the React app
 // app.use(express.static(path.join(__dirname, 'client/build')));
 

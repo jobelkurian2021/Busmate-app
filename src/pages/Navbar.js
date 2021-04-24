@@ -36,7 +36,7 @@ class Navbar extends Component {
                       <li><a href="/Bconfirm">Booking details</a></li>
                       <li><a href="/Register">Register</a></li>
                       <li><a href="/Adminhome">Adminhome</a></li>
-
+                      <li><a href="/Profile">Profile</a></li>
               </ul>
               </li>
               <li><a href="/timings">Route Timings</a></li>

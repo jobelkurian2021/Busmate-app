@@ -12,7 +12,7 @@ export default function ActionButton({Rows}) {
      const values= Rows.values.email
      console.log(values)
 try{
-            await axios.put(`http://localhost:3500/app/profileActivate`,{email:values,action:action}).then(resp=>{
+            await axios.put(`http://localhost:3500/api/profileActivate`,{email:values,action:action}).then(resp=>{
             
                     if(resp.request.status===200) {
                         toast.success(`${resp.data.message}`,{
@@ -42,7 +42,7 @@ try{
         console.log(e.data)
          }
 }
-const active="ACTIVE ";
+const active="ACTIVE";
 
 const inactive="INACTIVE"
 

@@ -10,9 +10,11 @@ import { FaBell } from 'react-icons/fa';
 import '../css/backup/app1.css';
 export default function Adminhome() {
     return (
-	<div>
+		<div >
 		<AdminNavbar />
-		Busmate Admin home
+		<div className="Login">
+		<h2 align="center">	Welcome Admin</h2>
+		</div>
 		</div>
 
     );
