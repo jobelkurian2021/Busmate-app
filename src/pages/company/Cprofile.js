@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import {  Button, Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from 'axios';
 import {toast} from 'react-toastify';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import CompanyNavbar from "../../components/navbar/CompanyNavbar";
+
 toast.configure()
 
 export default function Cprofile() {
@@ -133,6 +135,8 @@ export default function Cprofile() {
   });
 
   return (
+  <div>        
+    <CompanyNavbar/>
     <div className="Login">
                           <h2 align="center">Company Profile</h2>
       <Form onSubmit={formik.handleSubmit}>
@@ -345,5 +349,7 @@ export default function Cprofile() {
 </Button>
       </Form>
     </div>
+    </div>
+
   );
 }

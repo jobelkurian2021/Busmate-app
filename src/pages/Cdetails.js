@@ -6,6 +6,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import {Link} from 'react-router-dom';
 import {withFormik} from 'formik';
 // import * as Yup from 'yup';
+import CompanyNavbar from "../components/navbar/CompanyNavbar";
 
 import "./index.css";
 
@@ -13,6 +14,8 @@ import "./index.css";
 class Cdetails extends Component {
     render() {
       return ( 
+      <div>
+      <CompanyNavbar/>
     <div className="Login">
                     <h2 align="center">Company Details</h2>
         <Form>
@@ -99,6 +102,7 @@ class Cdetails extends Component {
           Submit Data
         </Button>
         </Form>
+    </div>
     </div>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./style.css";
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 
  
@@ -26,19 +26,7 @@ class Navbar extends Component {
                       <li><a href="/feedback">Feedback</a></li>
               </ul>
               </li>
-              <li className="dropdown"><a href="#"><span>Others</span><i className="bi bi-chevron-down"></i></a>
-              <ul>
-                     
-                      <li><a href="/Cprofile">Company profile</a></li>
-                      <li><a href="/Booking">Booking</a></li>
-                      <li><a href="/Cdetails">Company details</a></li>
-                      <li><a href="/Addroute">Add Route</a></li>
-                      <li><a href="/Bconfirm">Booking details</a></li>
-                      <li><a href="/Register">Register</a></li>
-                      <li><a href="/Adminhome">Adminhome</a></li>
-                      <li><a href="/Profile">Profile</a></li>
-              </ul>
-              </li>
+             
               <li><a href="/timings">Route Timings</a></li>
               <li><a href="/offers">Offers</a></li>
               <li><a href="/contact">Contact</a></li>

@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter, Route, Switch } from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Home from "./Home";
 import NotFound from "./NotFound";
 import Contact from "./Contact";
@@ -7,10 +7,10 @@ import Login from "./Login";
 import Register from "./Register";
 import About from "./About";
 import Signup from "./Signup";
-import Cprofile from "./Cprofile";
+import Cprofile from "./company/Cprofile";
 import Booking from './Booking';
 import Cdetails from './Cdetails';
-import Addroute from './Addroute';
+import Addroute from './routes/Addroute';
 import Bconfirm from './Bconfirm';
 import Feedback from './Feedback';
 import Adminhome from './admin/Adminhome';
@@ -18,6 +18,9 @@ import Customerhome from "./customer/Customerhome";
 import Companyhome from "./company/Companyhome";
 import Users from "./admin/Users";
 import Profile from "./Profile";
+// import ProtectedRoute from "./ProtectedRoute";
+import Bookings from "./booking/Bookings";
+import BusRoute from "./routes/BusRoute";
 
 export default function Routes() {
   return (
@@ -62,14 +65,21 @@ export default function Routes() {
         <Route exact path="/Cdetails">
             <Cdetails />
         </Route>
-
+        
+        <Route exact path="/admin/Bookings">
+            <Bookings />
+        </Route>
+        <Route exact path="/admin/BusRoute">
+            <BusRoute />
+        </Route>
+        {/* <ProtectedRoute path="/Cdetails" component={Cdetails} /> */}
         <Route exact path="/Cprofile">
             <Cprofile />
         </Route>
         <Route exact path="/Bconfirm">
             <Bconfirm />
         </Route>
-        <Route exact path="/Addroute">
+        <Route exact path="/admin/Addroute">
             <Addroute />
         </Route>
         <Route exact path="/Feedback">

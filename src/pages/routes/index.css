@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.signup-box{
+  border: 1px solid #ddd;
+  width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+.title{
+  font-weight: 600;
+  margin-top:0;
+}
+.err {
+  font-size: small;
+  color: red;
+}
+.asterisk{
+  font-size: small;
+  color: red;
+}
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}

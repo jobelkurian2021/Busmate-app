@@ -25,7 +25,8 @@ app.use(bodyParser.json());
 const Login = require("./models/login");
 let Cprofile = require("./models/cprofile");
 let Nroute = require("./models/nroute");
-let Nbooking = require("./models/nbooking")
+let Nbooking = require("./models/nbooking");
+let feedback = require("./models/nfeedback");
 
 mongoose.connect("mongodb://127.0.0.1:27017/project", {
     useUnifiedTopology: true, 
@@ -184,6 +185,7 @@ app.post('/api/newroute',(req,res)=>{
   .then(data=>{
       console.log(data)
       res.send(data)
+      
   }).catch(err=>{
       console.log(err)
   })
@@ -215,6 +217,43 @@ app.post('/api/newbooking',(req,res)=>{
   
 })
 
+router.get("/api/booking", async (req, resp) => {
+  try{
+    Nbooking.find({})
+  .exec((err,usersdata)=>{
+     if(err){
+      req.json( {message : "No data found"});
+      resp.redirect("/home");
+     }else{
+         resp.json(usersdata);
+     }
+  });
+  }
+  catch(error){
+      return resp
+      .status(400)
+      .json({ error: err, message: "Error fetching data" });
+  }
+});
+
+router.get("/api/routes", async (req, resp) => {
+  try{
+    Nroute.find({})
+  .exec((err,usersdata)=>{
+     if(err){
+      req.json( {message : "No data found"});
+      resp.redirect("/home");
+     }else{
+         resp.json(usersdata);
+     }
+  });
+  }
+  catch(error){
+      return resp
+      .status(400)
+      .json({ error: err, message: "Error fetching data" });
+  }
+});
 
 router.get("/api/userdata", async (req, resp) => {
   try{
@@ -333,6 +372,25 @@ router.put("/api/profileEdit", async (req, resp) => {
       .json({ error: error, message: "Error updating" });
   }
 });
+
+app.post('/api/feedback',(req,resp)=>{
+  const nfeedback = new feedback({
+    name:req.body.name,
+    email:req.body.email,
+    type:req.body.type,
+    msg:req.body.msg
+  })
+  nfeedback.save()
+  .then(data=>{
+      console.log(data)
+      resp.send(data)
+  }).catch(err=>{
+      console.log(err)
+  })
+  
+});
+
+
 // Serve the static files from the React app
 // app.use(express.static(path.join(__dirname, 'client/build')));
 

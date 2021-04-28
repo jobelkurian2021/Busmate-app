@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import {Link} from 'react-router-dom';
 import {toast} from 'react-toastify';
-import { Container, Row, Col } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -15,7 +15,10 @@ export default function Login() {
     email: "",
     password: "",
   };
-
+  let history = useHistory();
+  // const [user, setUser] = useState(false);
+  // const [isAuth, setIsAuth] = useState(false);
+  
   const onSubmit = async (values) => {
     try{
       axios.post(`http://localhost:3500/api/signin`, values).then(resp=>{
@@ -27,23 +30,20 @@ export default function Login() {
 
             if(resp.data.data.usetype==="Admin")
             {
-                window.location = "/admin/home";
+              history.push("/admin/home");
                 localStorage.setItem('myemail', resp.data.email);
-                localStorage.setItem('loginid', resp.data.data._id);
                 localStorage.setItem('role', resp.data.data.usetype);
             }
             if(resp.data.data.usetype==="User")
             {
-             window.location = "/customerhome";
+              history.push("/customerhome");
              localStorage.setItem('myemail', resp.data.email);
-              localStorage.setItem('loginid', resp.data.data._id);
              localStorage.setItem('role', resp.data.data.usetype);
             }
             if(resp.data.data.usetype==="Company")
             {
-             window.location = "/companyhome";
+              history.push("/companyhome");
              localStorage.setItem('myemail', resp.data.email);
-              localStorage.setItem('loginid', resp.data.data._id);
              localStorage.setItem('role', resp.data.data.usetype);
             }
           } 

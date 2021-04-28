@@ -1,10 +1,10 @@
-import React, { useState,Component } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import {Link} from 'react-router-dom';
-import {withFormik} from 'formik';
+import React, {Component } from "react";
+// import Form from "react-bootstrap/Form";
+// import Button from "react-bootstrap/Button";
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
+// import {Link} from 'react-router-dom';
+// import {withFormik} from 'formik';
 import './css/booking/animate.css';
 import './css/booking/icomoon.css';
 import './css/booking/themify-icons1.css';
@@ -13,6 +13,7 @@ import './css/booking/magnific-popup1.css';
 import './css/booking/bootstrap-datepicker.min.css';
 import './css/booking/owl.carousel.min.css';
 import './css/booking/owl.theme.default.min.css';
+import UserNavbar from "../components/navbar/UserNavbar";
 
 import './css/style.css';
 
@@ -21,6 +22,8 @@ class Booking extends Component {
     render() {
       return ( 
        <div>
+		           <UserNavbar/>
+
         <header id="gtco-header" className="gtco-cover gtco-cover-md" role="banner" 
         // style="background-image: url(images/img_bg_2.jpg)"
         >

@@ -1,11 +1,10 @@
 import React,{ Component } from 'react';
 import './App.css';
 import Header from './pages/Header'; 
-import Navbar from './pages/Navbar';
-import Content from './pages/Content';
-import Sidebar from './pages/Sidebar';
+import Navbar from './components/navbar/Navbar';
+
 import Footer from './pages/Footer';
-import Form from './pages/Form';
+
 import Routes from "./pages/Routes";
  
 class App extends Component {
@@ -38,7 +37,7 @@ componentWillMount() {
         {/* <Sidebar /> */}
       {/* </div> */}
       <Footer />
-      <p className="App-intro">;{this.state.apiResponse}</p>
+      {/* <p className="App-intro">;{this.state.apiResponse}</p> */}
 
       </div>
   );

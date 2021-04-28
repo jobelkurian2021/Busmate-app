@@ -1,11 +1,10 @@
 import React from "react";
-import Users from "./Users";
-import {Container} from "react-bootstrap";
-import {Route,BrowserRouter as Router ,Switch} from 'react-router-dom';
-import AdminNavbar from "./adminnavbar";
-import { Navbar, Nav,NavDropdown } from "react-bootstrap";
+// import Users from "./Users";
+// import {Route,BrowserRouter as Router ,Switch} from 'react-router-dom';
+import AdminNavbar from "../../components/navbar/Adminnavbar";
+// import { Navbar, Nav,NavDropdown } from "react-bootstrap";
 
-import { FaBell } from 'react-icons/fa';
+// import { FaBell } from 'react-icons/fa';
 
 import '../css/backup/app1.css';
 export default function Adminhome() {

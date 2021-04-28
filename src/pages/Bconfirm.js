@@ -1,12 +1,14 @@
-import React, { useState,Component } from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from 'axios';
 import {toast} from 'react-toastify';
+import UserNavbar from "../components/navbar/UserNavbar";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
@@ -119,6 +121,9 @@ export default function Addroute() {
     validationSchema
   });
       return ( 
+      <div>
+        <UserNavbar/>
+
     <div className="Login">
                     <h2 align="center">Booking Details</h2>
         <Form onSubmit={formik.handleSubmit}>
@@ -390,6 +395,7 @@ export default function Addroute() {
           Submit Data
         </Button>
         </Form>
+    </div>
     </div>
     );
   }

@@ -8,7 +8,7 @@ import AdminNavbar from "../../components/navbar/Adminnavbar";
 
 import  { COLUMN } from './Column';
 
-export default function Users() {
+export default function BusRoute() {
 
   const [DATA,setData] = useState([])
 
@@ -18,7 +18,7 @@ export default function Users() {
   async function userdatafetch () {
     await axios({
         method: 'Get',
-        url: 'http://localhost:3500/api/userdata'
+        url: 'http://localhost:3500/api/routes'
       }).then(resp=>{   
         const response=resp.data;
         setData(response)
@@ -32,8 +32,9 @@ export default function Users() {
 
 return (
     <div>
-		<AdminNavbar />
+            		<AdminNavbar />
 
+      <h2 align="center">All Routes</h2>
   <Container>
   <Row>
   <Col >
