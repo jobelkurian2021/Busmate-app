@@ -32,7 +32,8 @@ class Navbar extends Component {
               <li><a href="/contact">Contact</a></li>
               <li><a href="/Login">Login</a></li>
               <li><a href="/Signup">Register</a></li>
-    
+              {/* <li><a href="/home" onClick={this.props.logout}>Logout</a></li> */}
+
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>

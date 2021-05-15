@@ -5,7 +5,13 @@ import "./style.css";
 
  
 class UserNavbar extends Component {
+  handleLogout = () => {
+    this.setState(this.baseState)
+    localStorage.clear()
+    
+  }
   render() {
+    
     return (
       
         <header id="header" className="fixed-top"> 
@@ -25,7 +31,7 @@ class UserNavbar extends Component {
                       <li><a href="/feedback">Feedback</a></li>
                       <li><a href="/offers">Offers</a></li>
                       <li><a href="/contact">Contact</a></li>
-                      <li><a href="/timings">Route Timings</a></li>
+                      <li><a href="/schedule">Route Timings</a></li>
 
               </ul>
               </li>
@@ -42,7 +48,7 @@ class UserNavbar extends Component {
               <ul>
 
                       <li><a href="/Profile">Edit Profile</a></li>
-                      <li><a href="/home">Logout</a></li>
+                      <li><a href="/home" onClick={this.props.logout}>Logout</a></li>
 
               </ul>
               </li>

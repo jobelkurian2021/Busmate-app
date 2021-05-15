@@ -22,8 +22,8 @@ class CompanyNavbar extends Component {
 
               <li className="dropdown"><a href="#"><span>My Bus Schedules</span><i className="bi bi-chevron-down"></i></a>
               <ul>
-                     
-                    <li><a href="#">Add New Schedule</a></li>
+              <li><a href="/Company/AddBus">Add New Bus</a></li>
+                    <li><a href="/Company/NewSchedule">Add New Schedule</a></li>
                       <li><a href="/#">View my Bus Schedules</a></li>
               </ul>
               </li>
@@ -38,7 +38,7 @@ class CompanyNavbar extends Component {
               <ul>
 
                       <li><a href="/Profile">Edit Profile</a></li>
-                      <li><a href="/home">Logout</a></li>
+                      <li><a href="/home" onClick={this.props.logout}>Logout</a></li>
 
               </ul>
               </li>

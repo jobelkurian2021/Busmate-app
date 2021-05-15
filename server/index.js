@@ -27,6 +27,8 @@ let Cprofile = require("./models/cprofile");
 let Nroute = require("./models/nroute");
 let Nbooking = require("./models/nbooking");
 let feedback = require("./models/nfeedback");
+let Nschedule = require("./models/nschedule");
+let Nlocation = require("./models/Location");
 
 mongoose.connect("mongodb://127.0.0.1:27017/project", {
     useUnifiedTopology: true, 
@@ -48,6 +50,10 @@ connection.once("open", function() {
 // const port = process.env.PORT || 5000;
 
 app.use("/", router);
+
+app.use("/api/bus", require("./routes/bus"));
+app.use("/api/locations", require("./routes/location"));
+
 
 app.listen(PORT,function(){
     console.log('App is listening on port ' + PORT);
@@ -220,12 +226,12 @@ app.post('/api/newbooking',(req,res)=>{
 router.get("/api/booking", async (req, resp) => {
   try{
     Nbooking.find({})
-  .exec((err,usersdata)=>{
+  .exec((err,booking)=>{
      if(err){
       req.json( {message : "No data found"});
       resp.redirect("/home");
      }else{
-         resp.json(usersdata);
+         resp.json(booking);
      }
   });
   }
@@ -239,12 +245,74 @@ router.get("/api/booking", async (req, resp) => {
 router.get("/api/routes", async (req, resp) => {
   try{
     Nroute.find({})
-  .exec((err,usersdata)=>{
+  .exec((err,routes)=>{
      if(err){
       req.json( {message : "No data found"});
       resp.redirect("/home");
      }else{
-         resp.json(usersdata);
+         resp.json(routes);
+     }
+  });
+  }
+  catch(error){
+      return resp
+      .status(400)
+      .json({ error: err, message: "Error fetching data" });
+  }
+});
+
+
+router.get("/api/schedule", async (req, resp) => {
+  try{
+    Nschedule.find({})
+  .exec((err,schedule)=>{
+     if(err){
+      req.json( {message : "No data found"});
+      resp.redirect("/home");
+     }else{
+         resp.json(schedule);
+     }
+  });
+  }
+  catch(error){
+      return resp
+      .status(400)
+      .json({ error: err, message: "Error fetching data" });
+  }
+});
+
+
+app.post('api/newschedule',(req,res)=>{
+  const nschedule = new Nschedule({
+    routeid:req.body.routeid,
+    source:req.body.source,
+    destination:req.body.destination,
+    type:req.body.type,
+    starttime:req.body.starttime,
+    endtime:req.body.endtime,
+    stop:req.body.stop,
+    time:req.body.time,
+    fare:req.body.fare
+  })
+  nschedule.save()
+  .then(data=>{
+      console.log(data)
+      res.send(data)
+  }).catch(err=>{
+      console.log(err)
+  })
+  
+})
+
+router.get("/api/location", async (req, resp) => {
+  try{
+    Nlocation.find({})
+  .exec((err,location)=>{
+     if(err){
+      req.json( {message : "No data found"});
+      resp.redirect("/home");
+     }else{
+         resp.json(location);
      }
   });
   }

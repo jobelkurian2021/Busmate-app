@@ -8,9 +8,14 @@ import Footer from './pages/Footer';
 import Routes from "./pages/Routes";
  
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = { apiResponse: "" };
+}
+
+handleLogout = () => {
+  this.setState(this.baseState)
+  localStorage.clear()
 }
 
 callAPI() {
@@ -26,7 +31,10 @@ componentWillMount() {
   return (
       // function App() {
     <div>
-      <Navbar />
+      <Navbar 
+      logout={this.handleLogout}
+            {...this.state}
+            />
       <Header /> 
 
       <Routes />

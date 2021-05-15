@@ -21,6 +21,12 @@ import Profile from "./Profile";
 // import ProtectedRoute from "./ProtectedRoute";
 import Bookings from "./booking/Bookings";
 import BusRoute from "./routes/BusRoute";
+import  Payment from "./admin/Payment";
+import Reservations from "./customer/Reservations";
+import Search from "./customer/Search";
+import Schedule from "./customer/Schedule";
+import NewSchedule from "./company/NewSchedule";
+import AddNewBus from "./Addnewbus";
 
 export default function Routes() {
   return (
@@ -88,6 +94,9 @@ export default function Routes() {
         <Route exact path="/Companyhome">
             <Companyhome />
         </Route>
+        <Route exact path="/Company/NewSchedule">
+            <NewSchedule />
+        </Route>
         <Route exact path="/Customerhome">
             <Customerhome />
         </Route>
@@ -103,6 +112,19 @@ export default function Routes() {
         <Route exact path="/Profile">
             <Profile />
         </Route>
+        <Route exact path="/Payment">
+            <Payment />
+        </Route>
+        <Route exact path="/Reservations"> 
+        <Reservations /></Route>
+        <Route exact path="/Search"> 
+        <Search /></Route>
+        <Route exact path="/Schedule"> 
+        <Schedule /></Route>
+
+        <Route path="/Company/AddBus" exact component={AddNewBus} />
+
+
         <Route>
             <NotFound />
         </Route>

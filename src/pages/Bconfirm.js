@@ -14,7 +14,7 @@ import "./index.css";
 
 toast.configure()
 
-export default function Addroute() {
+export default function Bconfirm({ DataSou }) {
   const [usetype, setusetype] = useState(false);
 
   const userdropdown = (e) => {
@@ -176,6 +176,7 @@ export default function Addroute() {
          </Form.Group>
       <Form.Group size="lg" controlId="source">
           <Form.Label>Trip Source:</Form.Label>
+          
           <Form.Control
              type="text"
              name="source"
@@ -197,6 +198,7 @@ export default function Addroute() {
            ""
          )}
          </Form.Group>
+         
          <Form.Group size="lg" controlId="destination">
           <Form.Label>Trip Destination:</Form.Label>
           <Form.Control

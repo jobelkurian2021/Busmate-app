@@ -33,6 +33,7 @@ class Booking extends Component {
 				<div className="col-md-12 col-md-offset-0 text-left">
 					
 
+		
 					<div className="row row-mt-15em">
 						<div className="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
 							<h1>Planing Trip ? Book Now</h1>	
