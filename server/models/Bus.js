@@ -1,6 +1,6 @@
-const slug = require("mongoose-slug-generator");
+// const slug = require("mongoose-slug-generator");
 const mongoose = require("mongoose");
-mongoose.plugin(slug);
+// mongoose.plugin(slug);
 
 const { ObjectId } = mongoose.Schema;
 
@@ -9,7 +9,7 @@ const busSchema = new mongoose.Schema(
     name: {
       type: String,
       trim: true,
-      required: true,
+      // required: true,
       maxlength: 32
     },
     type: {
@@ -19,13 +19,13 @@ const busSchema = new mongoose.Schema(
     busNumber: {
       type: String,
       trim: true,
-      required: true,
+      // required: true,
       maxlength: 32
     },
     fare: {
       type: Number,
       trim: true,
-      required: true,
+      // required: true,
       maxlength: 32
     },
     features: {
@@ -71,13 +71,13 @@ const busSchema = new mongoose.Schema(
       // type: ObjectId, ref: "Travel"
     },
     startLocation: { 
-      type: String,
-      required: true
+      type: String
+      // required: true
       // type: ObjectId, ref: "Location" 
     },
     endLocation: { 
-      type: String,
-      required: true
+      type: String
+      // required: true
       // type: ObjectId, ref: "Location" 
     },
 
@@ -100,15 +100,15 @@ const busSchema = new mongoose.Schema(
         type: String,
         trim: true
       }
-    ],
-    slug: {
-      type: String,
-      slug: "name",
-      unique: true,
-      slug_padding_size: 3
-    }
+    ]
+    // slug: {
+    //   type: String,
+    //   slug: "name",
+    //   // unique: true,
+    //   slug_padding_size: 3
+    // }
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Bus", busSchema);
+module.exports = mongoose.model("Buse", busSchema);

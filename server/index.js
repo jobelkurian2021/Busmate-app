@@ -29,6 +29,8 @@ let Nbooking = require("./models/nbooking");
 let feedback = require("./models/nfeedback");
 let Nschedule = require("./models/nschedule");
 let Nlocation = require("./models/Location");
+let Bus= require("./models/Bus");
+
 
 mongoose.connect("mongodb://127.0.0.1:27017/project", {
     useUnifiedTopology: true, 
@@ -154,6 +156,48 @@ app.post("/api/signin", async (req, resp) => {
       .status(400)
       .json({ error: err, message: "email and password needed" });
   }
+});
+
+app.post('/api/addbus',async (req,res)=>{
+// exports.create = async (req, res) => {
+  const busExists = await Bus.findOne({ busNumber: req.body.busNumber });
+  if (busExists)
+    return res.status(403).json({
+      error: "Bus is already added!"
+    });
+
+  if (req.file !== undefined) {
+    const { filename: image } = req.file;
+
+    //Compress image
+    await sharp(req.file.path)
+      .resize(800)
+      .jpeg({ quality: 100 })
+      .toFile(path.resolve(req.file.destination, "resized", image));
+    fs.unlinkSync(req.file.path);
+    req.body.image = "busimage/resized/" + image;
+  }
+
+  if (req.body.boardingPoints) {
+    req.body.boardingPoints = req.body.boardingPoints.split(",");
+  }
+ 
+  if (req.body.droppingPoints) {
+    req.body.droppingPoints = req.body.droppingPoints.split(",");
+  }
+
+  const bus = new Bus(req.body);
+
+  // if (!checkDateAvailability(req.body.journeyDate)) {
+  //   bus.isAvailable = false;
+  // }
+
+  bus.owner = req.ownerauth;
+
+  await bus.save();
+
+  res.json(bus);
+
 });
 
 

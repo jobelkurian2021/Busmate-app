@@ -11,7 +11,7 @@ export const getAllAvailableBuses = () => axios.get('/bus/all-bus-available');
 export const getUnavailableBusesOfOwner = () => axios.get('/bus/owner-bus-unavailable');
 export const getAllUnavailableBuses = () => axios.get('/bus/all-bus-unavailable');
 
-export const addNewBus = body => axios.post('/bus', body);
+export const addNewBus = body => axios.post('http://localhost:3500/api/addbus', body);
 
 export const getBusBySlug = slug => axios.get('/bus/' + slug);
 

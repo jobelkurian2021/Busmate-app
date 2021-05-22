@@ -20,6 +20,8 @@ class Success extends Component {
 			}
 		} else {
 			// Add the bus
+			// axios.post(`http://localhost:3500/api/newbooking`,values).then(resp=>{
+
 			const resp = await addNewBus(this.props.formData).catch(err => {
 				this.setState({ loading: false, error: err.response.data.error });
 			});
@@ -37,13 +39,13 @@ class Success extends Component {
 				type: 'error',
 				title: error,
 			});
-			return <Redirect to="/" />;
+			return <Redirect to="/Company/AddBus" />;
 		} else {
 			Swal.fire({
 				type: 'success',
 				title: `Successfully ${message} the bus!`,
 			});
-			return <Redirect to="/customerhome" />;
+			return <Redirect to="/companyhome" />;
 		}
 	};
 
