@@ -30,6 +30,12 @@ class Adminnavbar extends Component {
                      
                       <li><a href="/Admin/AddRoute">Add New Route</a></li>
                       <li><a href="/Admin/BusRoute">View All Routes</a></li>
+                  <li class="dropdown"><a href="/Admin/Locations"><span>Locations</span> <i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                      <li><a href="/Admin/Locations">View All Locations</a></li>
+                      <li><a href="/Admin/Locations/add">Add New Location</a></li>
+                    </ul>
+                  </li>
               </ul>
               </li>
               <li><a href="/home">Logout</a></li>

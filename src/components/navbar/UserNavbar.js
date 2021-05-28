@@ -10,6 +10,25 @@ class UserNavbar extends Component {
     localStorage.clear()
     
   }
+  constructor(props) {
+    super(props)
+    this.state = { date: new Date() }
+}
+
+componentDidMount() {
+    this.time = setInterval(() => {
+        this.changeTime()
+    }, 1000)
+}
+
+componentWillUnmount() {
+    clearInterval(this.time)
+}
+
+changeTime() {
+    this.setState({ date: new Date() })
+}
+
   render() {
     
     return (
@@ -57,13 +76,17 @@ class UserNavbar extends Component {
             <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>
     
-          <div className="header-social-links d-flex">
-            {/* <a href="#" className="twitter"><i className="bu bi-twitter"></i></a> */}
+          {/* <div className="header-social-links d-flex">
+             <a href="#" className="twitter"><i className="bu bi-twitter"></i></a> 
             <a href="#" className="facebook"><i className="bu bi-facebook"></i></a>
             <a href="#" className="instagram"><i className="bu bi-instagram"></i></a>
-          </div>
-    
+          </div> */}
+          <div className="header-social-links d-flex">
+        <h3>&nbsp;&nbsp;{this.state.date.toLocaleTimeString()}.</h3>
         </div>
+
+        </div>
+
       </header>
     );
   }

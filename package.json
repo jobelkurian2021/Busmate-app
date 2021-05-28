@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ashvin27/react-datatable": "^1.5.3",
     "@react-pdf/renderer": "^2.0.12",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
@@ -15,6 +16,7 @@
     "dotenv": "^8.2.0",
     "expo-image-picker": "^10.1.4",
     "formik": "^2.2.6",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-axios": "^2.0.5",

@@ -2,11 +2,13 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const bcrypt = require("bcrypt");
-
+const jwt = require("jsonwebtoken");
+const _ = require("lodash");
 const app = express();
 const cors = require("cors");
 const mongoose = require('mongoose');
 // const loginRouter = require('./routes/loginrouter')
+require("dotenv").config();
 
 
 
@@ -134,6 +136,15 @@ app.post("/api/signin", async (req, resp) => {
                   data:Login,
                 });
                 console.log("success login");
+                const payload = {
+                  name: result.name,
+                  email: result.email,
+                  usetype: result.usetype
+                };
+              
+                const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '2h' });
+              
+                // return resp.json({ token });
               }
               if (!result) {
                 resp.status(200).json({
@@ -366,6 +377,21 @@ router.get("/api/location", async (req, resp) => {
       .json({ error: err, message: "Error fetching data" });
   }
 });
+
+app.post('/api/addlocation',(req,resp)=>{
+  const nlocation = new Nlocation({
+    place:req.body.place,
+    district:req.body.district
+  })
+  nlocation.save()
+  .then(data=>{
+      console.log(data)
+      resp.send(data)
+  }).catch(err=>{
+      console.log(err)
+  })
+  
+})
 
 router.get("/api/userdata", async (req, resp) => {
   try{

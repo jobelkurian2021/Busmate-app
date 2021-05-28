@@ -1,6 +1,6 @@
-// const slug = require("mongoose-slug-generator");
+const slug = require("mongoose-slug-generator");
 const mongoose = require("mongoose");
-// mongoose.plugin(slug);
+mongoose.plugin(slug);
 
 const { ObjectId } = mongoose.Schema;
 
@@ -100,13 +100,13 @@ const busSchema = new mongoose.Schema(
         type: String,
         trim: true
       }
-    ]
-    // slug: {
-    //   type: String,
-    //   slug: "name",
-    //   // unique: true,
-    //   slug_padding_size: 3
-    // }
+    ],
+    slug: {
+      type: String,
+      slug: "name",
+      // unique: true,
+      slug_padding_size: 3
+    }
   },
   { timestamps: true }
 );

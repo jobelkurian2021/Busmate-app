@@ -6,9 +6,24 @@ import { Button} from "react-bootstrap";
 import axios from "axios";
 import Search from "./Search";
 // import Customer from "./Customer";
+import ReactDOM from "react-dom";
 
 import UserNavbar from "../../components/navbar/UserNavbar";
 // import { useHistory } from "react-router-dom";
+// const ClockUsingHooks = props => {
+//   const [time, setTime] = useState(new Date())
+
+//   const changeTime = () => {
+//       setTime(new Date());
+//   }
+
+//   useEffect(() => {
+//       const tick = setInterval(() => {
+//           changeTime();
+//       }, 1000);
+//       return () => clearInterval(tick)
+//   });
+// }
 
 export default function Customerhome() {
     // const email= localStorage.getItem("myemail"),
@@ -69,13 +84,12 @@ export default function Customerhome() {
     //     console.error(e);
     //   }
     // }, []);
-  
-  
+    
     return (
     <div>
         <UserNavbar/>
         <div className="Login">
-
+        {/* <h2>It is {time.toLocaleTimeString()}.</h2> */}
            {/* <h2 align="center">Customer Home</h2> */}
            <div className="p-4 m-3">
         {TABLE ? (
@@ -104,4 +118,6 @@ export default function Customerhome() {
         </div>
     </div>
     )
-}
+};
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<ClockUsingHooks />, rootElement);

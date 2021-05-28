@@ -6,7 +6,12 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './pages/Footer';
 
 import Routes from "./pages/Routes";
- 
+import { isAuthenticated } from "./components/Utils/Requests/Auth";
+
+import setAuthToken from "./components/Utils/setAuthToken";
+
+setAuthToken(isAuthenticated().token);
+
 class App extends Component {
   constructor(props, context) {
     super(props, context);

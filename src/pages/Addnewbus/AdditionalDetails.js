@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Layout from "../../components/core/Layout";
 import CompanyNavbar from "../../components/navbar/CompanyNavbar";
+import placeJson from "../../components/Utils/helpers/place.json";
+
 
 export default class AdditionalDetails extends Component {
   continue = e => {
@@ -12,9 +14,18 @@ export default class AdditionalDetails extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
-
+  state = {
+    place: "",
+    places: [],
+    loading: ""
+  };
+  componentDidMount() {
+    const resp = JSON.parse(JSON.stringify(placeJson));
+    this.setState({ places: resp });
+  }
   render() {
     const { values, handleChange } = this.props;
+    const { places, place, loading } = this.state;
 
     console.log(values);
 
@@ -57,7 +68,7 @@ export default class AdditionalDetails extends Component {
           />
         </div>
 
-        {/* <div className="form-group">
+        <div className="form-group">
           <label>Start Location</label>
 
           <select
@@ -67,15 +78,22 @@ export default class AdditionalDetails extends Component {
           >
             <option value="Default" disabled>
               Select Location
-            </option>
+              </option>
+                {places.length > 0 &&
+                  places.map(places => (
+                    <option value={places} key={places}>
+                      {places}
+                    </option>
+                  ))}
+            {/* </option>
             {values.locations.map(location => (
               <option value={location.place} key={location.place}>
                 {location.place}
               </option>
-            ))}
-          </select>
-        </div> */}
-      <div className="form-group">
+            ))}*/}
+          </select> 
+        </div>
+      {/* <div className="form-group">
           <label>Start Location</label>
           <input
             type="text"
@@ -96,8 +114,8 @@ export default class AdditionalDetails extends Component {
             onChange={handleChange("endLocation")}
             value={values.endLocation}
           />
-        </div>
-        {/* <div className="form-group">
+        </div> */}
+        <div className="form-group">
           <label>End Location</label>
           <select
             className="custom-select custom-select-sm form-control"
@@ -107,13 +125,19 @@ export default class AdditionalDetails extends Component {
             <option value="Default" disabled>
               Select Location
             </option>
-            {values.locations.map(location => (
+            {/* {values.locations.map(location => (
               <option value={location.place} key={location.place}>
                 {location.place}
               </option>
-            ))}
+            ))} */}
+              {places.value !=values.startLocation &&
+                  places.map(places => (
+                    <option value={places} key={places}>
+                      {places}
+                    </option>
+                  ))}
           </select>
-        </div> */}
+        </div>
 
         <div className="form-group">
           <label>Boarding Points</label>

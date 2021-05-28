@@ -3,7 +3,7 @@ import AdditionalDetails from "./AdditionalDetails";
 import PrimaryDetails from "./PrimaryDetails";
 import Confirm from "./Confirm";
 import Success from "./Success";
-import { getAllLocations } from "../../components/Utils/Requests/Location";
+import { getAllLocations,getLocations } from "../../components/Utils/Requests/Location";
 import { getAllTravels } from "../../components/Utils/Requests/Travel";
 
 class AddNewBus extends Component {
@@ -18,7 +18,7 @@ class AddNewBus extends Component {
     seatsAvailable: "",
     numberOfSeats: "",
     departure_time: "",
-    isAvailable: false,
+    isAvailable: true,
     startLocation: "",
     locations: [],
     travels: [],
@@ -58,16 +58,19 @@ class AddNewBus extends Component {
   };
 
   fetchLocations = async () => {
-    const resp = await getAllLocations();
+    // axios.post(`http://localhost:3500/api/newbooking`,values).then(resp=>{
+    const resp = await getLocations();
     if (resp.status === 200) {
       this.setState({
-        locations: resp.data,
-        startLocation: resp.data[0]._id,
-        endLocation: resp.data[resp.data.length - 1]._id
+        place: resp.data,
+        place: resp.data[0]._id,
+        place: resp.data[resp.data.length - 1]._id
       });
     }
+    
   };
 
+  
   fetchTravels = async () => {
     const resp = await getAllTravels();
     if (resp.status === 200) {

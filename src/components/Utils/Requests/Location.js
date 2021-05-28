@@ -1,7 +1,9 @@
 import axios from "axios";
 
-export const getAllLocations = () => axios.get("/locations");
-export const getALocation = id => axios.get(`/locations/${id}`);
-export const updateLocation = (id, body) => axios.put(`/locations/${id}`, body);
-export const removeLocation = id => axios.delete(`/locations/${id}`);
-export const addNewLocation = body => axios.post("/locations", body);
+export const getLocations = () => axios.get("http://localhost:3500/api/Location");
+export const getAllLocations = () => axios.get("http://localhost:3500/api/Location");
+export const getALocation = id => axios.get(`/location/${id}`);
+export const updateLocation = (id, body) => axios.put(`/location/${id}`, body);
+export const removeLocation = id => axios.delete(`/location/${id}`);
+// export const addNewLocation = body => axios.post("/location", body);
+export const addNewLocation = body => axios.post("http://localhost:3500/api/addlocation", body);

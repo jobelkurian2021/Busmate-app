@@ -9,20 +9,22 @@ const {
   remove,
   getLocations,
   locationById
+  // getAllLocations
 } = require("../controllers/location");
 
 router
   .route("/")
   .get(getLocations)
-  .post( add);
+  // .get(getAllLocations)
+  .post(add);
   // .post(requireSuperadminSignin, add);
 
 router
-  .route("/:id")
+  .route("/:place")
   .get(read)
   .put( update)
   .delete( remove);
 
-router.param("id", locationById);
+router.param("place", locationById);
 
 module.exports = router;

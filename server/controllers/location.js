@@ -2,7 +2,7 @@ const Location = require("../models/Location");
 const _ = require("lodash");
 
 exports.locationById = async (req, res, next, id) => {
-  const location = await Location.findById(id);
+  const location = await Location.findById(place);
 
   if (!location) {
     return res.status(400).json({
@@ -22,7 +22,7 @@ exports.add = async (req, res) => {
 };
 
 exports.getLocations = async (req, res) => {
-  const location = await Location.find({}).sort({ name: 1 });
+  const location = await Location.find({}).sort({ place: 1 });
 
   res.json(location);
 };

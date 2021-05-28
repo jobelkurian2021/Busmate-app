@@ -54,6 +54,8 @@ export default class PrimaryDetails extends Component {
           </small>
         </div>
 
+            
+
         <div className="form-check check-group">
           <input
             type="checkbox"
