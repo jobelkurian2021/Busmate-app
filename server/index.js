@@ -7,6 +7,8 @@ const _ = require("lodash");
 const app = express();
 const cors = require("cors");
 const mongoose = require('mongoose');
+const expressValidator = require("express-validator");
+
 // const loginRouter = require('./routes/loginrouter')
 require("dotenv").config();
 
@@ -22,7 +24,10 @@ app.use(cors());
 
 app.use(bodyParser.json());
 // app.use('/api', loginRouter);
-
+app.use(express.json());
+// app.use(expressValidator());
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 const Login = require("./models/login");
 let Cprofile = require("./models/cprofile");
@@ -57,6 +62,7 @@ app.use("/", router);
 
 app.use("/api/bus", require("./routes/bus"));
 app.use("/api/locations", require("./routes/location"));
+app.use("/api/travels", require("./routes/travel"));
 
 
 app.listen(PORT,function(){

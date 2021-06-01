@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import { checkIfTokenExpired } from '../helpers';
-import { isAuthenticated } from './Auth';
+// import { isAuthenticated } from './Auth';
 
 export const getAvailableBusesOfOwner = () =>{
     // checkIfTokenExpired(isAuthenticated().token);

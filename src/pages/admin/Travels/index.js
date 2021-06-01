@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import Layout from "../../core/Layout";
+import Layout from "../../../components/core/Layout";
 import ReactDatatable from "@ashvin27/react-datatable";
 import moment from "moment";
 import Swal from "sweetalert2";
-import Loading from "../../core/Loading";
-import { getAllTravels, removeTravel } from "../../../Utils/Requests/Travel";
+import Loading from "../../../components/core/Loading";
+import { getAllTravels, removeTravel } from "../../../components/Utils/Requests/Travel";
+import AdminNavbar from "../../../components/navbar/Adminnavbar";
 
 class Travels extends Component {
   constructor(props) {
@@ -147,6 +148,7 @@ class Travels extends Component {
   render() {
     return (
       <Layout title="Travels">
+        		<AdminNavbar />
         <div className="d-flex" id="wrapper">
           <div id="page-content-wrapper">
             <div className="container-fluid">
@@ -156,7 +158,7 @@ class Travels extends Component {
                 className="btn btn-outline-primary float-right mt-3 mr-2"
                 data-toggle="modal"
                 data-target="#add-user-modal"
-                onClick={() => this.props.history.push("/add-travel")}
+                onClick={() => this.props.history.push("/Admin/Travels/add")}
               >
                 {" "}
                 Add Travel

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import Layout from "../../core/Layout";
+import Layout from "../../../components/core/Layout";
 import Swal from "sweetalert2";
-import showError from "../../core/Error";
-import showLoading from "../../core/Loading";
-import { addNewTravel } from "../../../Utils/Requests/Travel";
+import showError from "../../../components/core/Error";
+import showLoading from "../../../components/core/Loading";
+import { addNewTravel } from "../../../components/Utils/Requests/Travel";
+import AdminNavbar from "../../../components/navbar/Adminnavbar";
 
 class AddTravel extends Component {
   state = {
@@ -25,7 +26,7 @@ class AddTravel extends Component {
         type: "success",
         title: "Successfully add new travel!",
         onRender: () => {
-          this.props.history.push("/travels");
+          this.props.history.push("../../Admin/Travels/");
         }
       });
     }
@@ -45,6 +46,8 @@ class AddTravel extends Component {
 
     return (
       <Layout title="Add Travel">
+                		<AdminNavbar />
+
         {showError(error)}
         {showLoading(loading)}
         {!loading && (

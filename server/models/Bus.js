@@ -109,6 +109,6 @@ const busSchema = new mongoose.Schema(
     }
   },
   { timestamps: true }
-);
+); 
 
 module.exports = mongoose.model("Buse", busSchema);

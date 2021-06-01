@@ -1,4 +1,8 @@
-import axios from "axios";
+import Axios from "axios";
+
+const axios = Axios.create({
+    baseURL: 'http://localhost:3500/api',
+  })
 
 export const getAllTravels = () => axios.get("/travels");
 export const getATravel = id => axios.get(`/travels/${id}`);

@@ -34,8 +34,9 @@ class Adminnavbar extends Component {
                     <ul>
                       <li><a href="/Admin/Locations">View All Locations</a></li>
                       <li><a href="/Admin/Locations/add">Add New Location</a></li>
-                    </ul>
+                    </ul> 
                   </li>
+                  <li><a href="/Admin/Travels">Travels</a></li>
               </ul>
               </li>
               <li><a href="/home">Logout</a></li>

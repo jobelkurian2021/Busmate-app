@@ -29,6 +29,8 @@ import NewSchedule from "./company/NewSchedule";
 import AddNewBus from "./Addnewbus";
 import Locations from "./admin/Locations";
 import AddLocation from "./admin/Locations/add";
+import Travels from "./admin/Travels";
+import AddTravel from "./admin/Travels/add";
 import EditLocation from "./admin/Locations/edit";
 import Clock from "./Clock";
 
@@ -128,8 +130,11 @@ export default function Routes() {
 
         <Route path="/Company/AddBus" exact component={AddNewBus} />
         <Route path="/Admin/Locations" exact component={Locations} />
+        <Route path="/Admin/Travels" exact component={Travels} />
         <Route path="/Admin/Locations/add" exact component={AddLocation} />
         <Route path="/Admin/Locations/edit" exact component={EditLocation} />
+        <Route path="/Admin/Travels/add" exact component={AddTravel} />
+
         <Route path="/Clock" exact component={Clock} />
 
 
