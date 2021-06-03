@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const locationSchema = new mongoose.Schema({
+  id:{
+    type: String
+  },
   place: {
     type: String,
     // trim: true,

@@ -1,6 +1,6 @@
-// const slug = require("mongoose-slug-generator");
+const slug = require("mongoose-slug-generator");
 const mongoose = require("mongoose");
-// mongoose.plugin(slug);
+mongoose.plugin(slug);
 
 const { ObjectId } = mongoose.Schema;
 
@@ -53,9 +53,9 @@ const busSchema = new mongoose.Schema(
       default: 30,
       maxlength: 32
     },
-    // image: {
-    //   type: String
-    // },
+    image: {
+      type: String
+    },
     departure_time: {
       type: String,
       trim: true,
@@ -66,25 +66,29 @@ const busSchema = new mongoose.Schema(
       default: false
     },
     travel: {
-      type: String
-      // type: ObjectId, ref: "Travel"
+      type: String,
+      required: true,
+      type: ObjectId, ref: "Travel"
     },
     startLocation: { 
-      type: String
-      // type: ObjectId, ref: "Location"
-     },
+      type: String,
+      required: true,
+      type: ObjectId, ref: "Location" 
+    },
     endLocation: { 
-      type: String
-      // type: ObjectId, ref: "Location"
-     },
+      type: String,
+      required: true,
+      type: ObjectId, ref: "Location" 
+    },
 
     journeyDate: {
       type: String
     },
-    // owner: {
-    //   type: ObjectId,
-    //   ref: "Owner"
-    // },
+    owner: {
+      type: String
+      // type: ObjectId,
+      // ref: "Owner"
+    },
     boardingPoints: [
       {
         type: String,
@@ -96,15 +100,15 @@ const busSchema = new mongoose.Schema(
         type: String,
         trim: true
       }
-    ]
-    // slug: {
-    //   type: String,
-    //   slug: "name",
-    //   unique: true,
-    //   slug_padding_size: 3
-    // }
+    ],
+    slug: {
+      type: String,
+      slug: "name",
+      // unique: true,
+      slug_padding_size: 3
+    }
   },
   { timestamps: true }
-);
+); 
 
 module.exports = mongoose.model("Buse", busSchema);

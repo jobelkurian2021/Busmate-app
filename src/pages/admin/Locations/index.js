@@ -12,7 +12,6 @@ import {
 import Loading from "../../../components/core/Loading";
 import AdminNavbar from "../../../components/navbar/Adminnavbar";
 
-
 class Locations extends Component {
   
 
@@ -49,33 +48,33 @@ class Locations extends Component {
     
 
     this.columns = [
-      // {
-      //   key: "_id",
-      //   text: "_id.",
-      //   className: "id",
-      //   align: "left",
-      //   sortable: true
-      // },
+      {
+        key: "id",
+        text: "Id",
+        className: "id",
+        align: "center",
+        sortable: true
+      },
       {
         key: "place",
         text: "Place",
         className: "name",
-        align: "left",
+        align: "center",
         sortable: true
       },
-      // {
-      //   key: "district",
-      //   text: "District",
-      //   className: "name",
-      //   align: "left",
-      //   sortable: true
-      // },
+      {
+        key: "district",
+        text: "District",
+        className: "name",
+        align: "center",
+        sortable: true
+      },
       {
         key: "action",
         text: "Action",
         className: "action",
-        width: 100,
-        align: "left",
+        width: 150,
+        align: "center",
         sortable: false,
         cell: record => {
           return (
@@ -85,7 +84,7 @@ class Locations extends Component {
                 data-target="#update-user-modal"
                 className="btn btn-primary btn-sm"
                 onClick={() =>
-                  this.props.history.push(`/Admin/Locations/edit/${record._id}`)
+                  this.props.history.push(`/Admin/Locations/edit/${record.id}`)
                 }
                 style={{ marginRight: "5px" }}
               >
@@ -93,7 +92,7 @@ class Locations extends Component {
               </button>
               <button
                 className="btn btn-danger btn-sm"
-                onClick={() => this.deleteRecord(record._id)}
+                onClick={() => this.deleteRecord(record.id)}
               >
                 <i className="fa fa-trash"></i>
               </button>
@@ -170,7 +169,7 @@ class Locations extends Component {
   };
 
   fetchLocations = async () => {
-    const resp = await getLocations().catch(err => {
+    const resp = await getAllLocations().catch(err => {
       this.setState({ error: err.response.data.error, isLoading: false });
     });
     if (resp && resp.status === 200) {
@@ -192,12 +191,13 @@ class Locations extends Component {
   render() {
 
     return (
-      <Layout title="Locations">
+      <div align="center">
+      <Layout align="center">
         		<AdminNavbar />
-        <div className="d-flex" id="wrapper">
+        <div className="d-flex" id="wrapper" align="center">
 
-          <div id="page-content-wrapper">
-            <div className="container-fluid">
+          <div id="page-content-wrapper" align="center">
+            <div className="container-fluid" align="center">
               <button className="btn btn-link mt-3" id="menu-toggle"></button>
 
               <button
@@ -225,6 +225,7 @@ class Locations extends Component {
           </div>
         </div>
       </Layout>
+      </div>
     );
   }
 }

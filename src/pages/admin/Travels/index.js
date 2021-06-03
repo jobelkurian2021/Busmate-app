@@ -30,7 +30,7 @@ class Travels extends Component {
         key: "action",
         text: "Action",
         className: "action",
-        width: 100,
+        width: 150,
         align: "left",
         sortable: false,
         cell: record => {
@@ -41,7 +41,7 @@ class Travels extends Component {
                 data-target="#update-user-modal"
                 className="btn btn-primary btn-sm"
                 onClick={() =>
-                  this.props.history.push(`/edit-travel/${record._id}`)
+                  this.props.history.push(`/Admin/Travels/Edit/${record._id}`)
                 }
                 style={{ marginRight: "5px" }}
               >

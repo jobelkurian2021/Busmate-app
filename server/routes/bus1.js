@@ -10,7 +10,6 @@ const {
   busBySlug,
   getBuses,
   searchBus,
-  addNewBus,
   searchBusByFilter,
   getAvailableBusesOfOwner,
   getUnavailableBusesOfOwner,
@@ -23,8 +22,9 @@ const { uploadBusImage } = require("../helpers");
 router
   .route("/")
   .get(getBuses)
-  .post(uploadBusImage, addNewBus);
-
+  // .post(requireOwnerSignin, uploadBusImage, create);
+  .post( uploadBusImage, create);
+  
 router.get(
   "/owner-bus-available",
   // requireOwnerSignin,
@@ -38,7 +38,6 @@ router.get(
 
 router.get("/all-bus-available", getAllAvailableBuses);
 router.get("/all-bus-unavailable", getAllUnavailableBuses);
-router.post("/bus/add", addNewBus);
 
 router.get("/search", searchBus);
 router.post("/filter", searchBusByFilter);
@@ -46,8 +45,14 @@ router.post("/filter", searchBusByFilter);
 router
   .route("/:busSlug")
   .get(read)
-  .put(uploadBusImage, update)
-  .delete(remove);
+   .put( uploadBusImage, update)
+  .delete( remove);
+
+
+  // .put( isPoster, uploadBusImage, update)
+  // .delete( isPoster, remove);
+  // .put(requireOwnerSignin, isPoster, uploadBusImage, update)
+  // .delete(requireOwnerSignin, isPoster, remove);
 
 router.param("busSlug", busBySlug);
 

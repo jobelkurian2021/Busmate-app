@@ -100,7 +100,7 @@ exports.searchBusByFilter = async (req, res) => {
   res.json(bus);
 };
 
-exports.addNewBus = async (req, res) => {
+exports.create = async (req, res) => {
   const busExists = await Bus.findOne({ busNumber: req.body.busNumber });
   if (busExists)
     return res.status(403).json({

@@ -1,6 +1,7 @@
 import React from "react";
 import ImageUploader from "react-images-upload";
 import Layout from "../../components/core/Layout";
+import CompanyNavbar from "../../components/navbar/CompanyNavbar";
 
 export default class Confirm extends React.Component {
   render() {
@@ -19,6 +20,7 @@ export default class Confirm extends React.Component {
 	  : "none";
 	  
     return (
+      <div>      <CompanyNavbar/>
       <Layout title="Image uploader">
         <button
           className="btn btn-success submit-form"
@@ -39,6 +41,8 @@ export default class Confirm extends React.Component {
           defaultImage={values.image}
         />
       </Layout>
+      </div>
+
     );
   }
 }

@@ -19,8 +19,7 @@ class Success extends Component {
 				this.setState({ loading: false });
 			}
 		} else {
-			// Add the bus
-			const resp = await addNewBus(this.props.formData).catch(err => {
+					const resp = await addNewBus(this.props.formData).catch(err => {
 				this.setState({ loading: false, error: err.response.data.error });
 			});
 			if (resp && resp.status === 200) {
@@ -37,13 +36,13 @@ class Success extends Component {
 				type: 'error',
 				title: error,
 			});
-			return <Redirect to="/" />;
+			return <Redirect to="/Company/AddBus" />;
 		} else {
 			Swal.fire({
 				type: 'success',
 				title: `Successfully ${message} the bus!`,
 			});
-			return <Redirect to="/" />;
+			return <Redirect to="/companyhome" />;
 		}
 	};
 

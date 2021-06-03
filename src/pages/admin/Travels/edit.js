@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import Layout from "../../core/Layout";
+import Layout from "../../../components/core/Layout";
 import Swal from "sweetalert2";
-import showError from "../../core/Error";
-import showLoading from "../../core/Loading";
-import districtJson from "../../../Utils/helpers/district.json";
-import { getATravel, updateTravel } from "../../../Utils/Requests/Travel";
+import showError from "../../../components/core/Error";
+import showLoading from "../../../components/core/Loading";
+import districtJson from "../../../components/Utils/helpers/district.json";
+import { getATravel, updateTravel } from "../../../components/Utils/Requests/Travel";
 
 class EditTravel extends Component {
   state = {
@@ -49,7 +49,7 @@ class EditTravel extends Component {
         type: "success",
         title: "Successfully updated the travel!",
         onRender: () => {
-          this.props.history.push("/travels");
+          this.props.history.push("/Admin/Travels");
         }
       });
     }

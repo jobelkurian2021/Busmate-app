@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 const _ = require("lodash");
 const app = express();
 const cors = require("cors");
@@ -63,6 +63,8 @@ app.use("/", router);
 app.use("/api/bus", require("./routes/bus"));
 app.use("/api/locations", require("./routes/location"));
 app.use("/api/travels", require("./routes/travel"));
+app.use("/api/Location", require("./routes/location"));
+app.use('api/payment', require('./routes/payment'));
 
 
 app.listen(PORT,function(){
@@ -148,7 +150,7 @@ app.post("/api/signin", async (req, resp) => {
                   usetype: result.usetype
                 };
               
-                const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '2h' });
+                // const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '2h' });
               
                 // return resp.json({ token });
               }
@@ -175,47 +177,47 @@ app.post("/api/signin", async (req, resp) => {
   }
 });
 
-app.post('/api/addbus',async (req,res)=>{
-// exports.create = async (req, res) => {
-  const busExists = await Bus.findOne({ busNumber: req.body.busNumber });
-  if (busExists)
-    return res.status(403).json({
-      error: "Bus is already added!"
-    });
+// app.post('/api/addbus',async (req,res)=>{
+// // exports.create = async (req, res) => {
+//   const busExists = await Bus.findOne({ busNumber: req.body.busNumber });
+//   if (busExists)
+//     return res.status(403).json({
+//       error: "Bus is already added!"
+//     });
 
-  if (req.file !== undefined) {
-    const { filename: image } = req.file;
+//   if (req.file !== undefined) {
+//     const { filename: image } = req.file;
 
-    //Compress image
-    await sharp(req.file.path)
-      .resize(800)
-      .jpeg({ quality: 100 })
-      .toFile(path.resolve(req.file.destination, "resized", image));
-    fs.unlinkSync(req.file.path);
-    req.body.image = "busimage/resized/" + image;
-  }
+//     //Compress image
+//     await sharp(req.file.path)
+//       .resize(800)
+//       .jpeg({ quality: 100 })
+//       .toFile(path.resolve(req.file.destination, "resized", image));
+//     fs.unlinkSync(req.file.path);
+//     req.body.image = "busimage/resized/" + image;
+//   }
 
-  if (req.body.boardingPoints) {
-    req.body.boardingPoints = req.body.boardingPoints.split(",");
-  }
+//   if (req.body.boardingPoints) {
+//     req.body.boardingPoints = req.body.boardingPoints.split(",");
+//   }
  
-  if (req.body.droppingPoints) {
-    req.body.droppingPoints = req.body.droppingPoints.split(",");
-  }
+//   if (req.body.droppingPoints) {
+//     req.body.droppingPoints = req.body.droppingPoints.split(",");
+//   }
 
-  const bus = new Bus(req.body);
+//   const bus = new Bus(req.body);
 
-  // if (!checkDateAvailability(req.body.journeyDate)) {
-  //   bus.isAvailable = false;
-  // }
+//   // if (!checkDateAvailability(req.body.journeyDate)) {
+//   //   bus.isAvailable = false;
+//   // }
 
-  bus.owner = req.ownerauth;
+//   bus.owner = req.ownerauth;
 
-  await bus.save();
+//   await bus.save();
 
-  res.json(bus);
+//   res.json(bus);
 
-});
+// });
 
 
 app.post('/api/cprofile',(req,res)=>{

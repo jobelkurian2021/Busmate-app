@@ -20,11 +20,11 @@ router
   // .post(requireSuperadminSignin, add);
 
 router
-  .route("/:place")
+  .route("/:id")
   .get(read)
   .put( update)
   .delete( remove);
 
-router.param("place", locationById);
+router.param("id", locationById);
 
 module.exports = router;
