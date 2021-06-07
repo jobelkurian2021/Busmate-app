@@ -48,7 +48,7 @@ export default function Login() {
             }
           } 
              if(resp.data.data.status!=="ACTIVE"){
-              toast.error(`your blocked please contact admin`,{
+              toast.error(`Your account blocked! please contact admin`,{
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: true,
@@ -164,8 +164,13 @@ export default function Login() {
         {/* <Button block size="lg" type="button" onClick={this.btnClick.bind(this)}>
           Not a User? Register Now 
         </Button> */}
-        <br/><br/>
-        <Link to="/Signup" className="btn btn-primary">Not a User? Register Now</Link>
+        <br/>
+        <Button block size="lg" href="/Signup" type="button">Not a User? Register Now</Button> 
+        {/* <Link to="/Signup" className="btn btn-primary" >Not a User? Register Now</Link> */}
+        <br/>
+        <Form.Text className="text-muted" align="center">
+         <Link to="/Forgotpassword">Forgot Password? Reset Now</Link>
+            </Form.Text>
       </Form>
     </div>
   );

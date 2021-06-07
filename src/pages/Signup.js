@@ -56,7 +56,7 @@ export default function Signup() {
             draggable: true,
             progress: undefined});
             resetForm({});
-            window.location = "/";
+            window.location = "/login";
         }else{
           toast.error(`${resp.data.message}`,{
             position: "bottom-right",
@@ -346,10 +346,17 @@ export default function Signup() {
 <Button block size="lg" type="submit" >
   SignUp Now
 </Button>
+<br/>
+<Button block size="lg" href="/Login" type="button">Existing User? Login Now</Button> 
+
+{/* <Link to="/Login" className="btn btn-primary">Existing User? Login Now</Link> */}
 <br/><br/>
-
-<Link to="/Login" className="btn btn-primary">Existing User? Login Now</Link>
-
+<Form.Text className="text-muted" align="center">
+         <Link to="/Signup/otpresend">RESEND OTP FOR VERIFICATION</Link>
+            </Form.Text>
+{/* <Form.Text className="text-muted p-4">
+              RESEND <Link to="/otpresend">OTP FOR VERIFICATION</Link>
+</Form.Text> */}
 </Form>
 </div>
   );

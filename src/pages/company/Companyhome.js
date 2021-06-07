@@ -1,5 +1,8 @@
 import React,{ Component } from 'react'
 import CompanyNavbar from "../../components/navbar/CompanyNavbar";
+// import { Col } from "react-bootstrap";
+// import { BrowserRouter as Router, Switch } from "react-router-dom";
+// import { Companyroute } from "../../components/routes/Company";
 
 // export default function index() {
 //     return (
@@ -31,6 +34,13 @@ class Companyhome extends Component {
         <div className="Login">
  		<h2 align="center">	Company Home</h2>
         </div>
+        {/* <Col>
+            <Router>
+              <Switch>
+              <Companyroute exact path="/companyhome" component={Companyroute} />
+              </Switch>
+            </Router>
+        </Col> */}
         </div>
     );
 }

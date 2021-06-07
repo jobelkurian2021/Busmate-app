@@ -14,6 +14,7 @@
     "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "easyinvoice": "github:jobelkurian2021/easyinvoice",
     "env-cmd": "^10.1.0",
     "expo-image-picker": "^10.1.4",
     "formik": "^2.2.6",

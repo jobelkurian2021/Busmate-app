@@ -21,7 +21,9 @@ import Profile from "./Profile";
 // import ProtectedRoute from "./ProtectedRoute";
 import Bookings from "./booking/Bookings";
 import BusRoute from "./routes/BusRoute";
-import  Payment from "./admin/Payment";
+import  Payment from "../components/Payment";
+import Bill from "../components/bill/bill";
+// import  Payment from "./admin/Payment";
 import Reservations from "./customer/Reservations";
 import Search from "./customer/Search";
 import Schedule from "./customer/Schedule";
@@ -35,6 +37,14 @@ import EditTravel from "./admin/Travels/edit";
 import EditLocation from "./admin/Locations/edit";
 import Pay from "./payment/App.js";
 import Clock from "./Clock";
+import Forgotpassword from "./Login/Forgotpassword";
+import Newpassword from "./Login/newpass";
+import Resendotp from "./Login/resendotp";
+
+import BusCaller from "./booking/seats";
+import SeatDetails from "./booking/seats/seats";
+import { Companyroute } from "../components/routes/Company";
+
 
 export default function Routes() {
   return (
@@ -72,7 +82,15 @@ export default function Routes() {
         <Route exact path="/Signup">
             <Signup />
         </Route>
-
+        <Route exact path="/Forgotpassword">
+            <Forgotpassword />
+        </Route>
+        <Route exact path="/Forgotpassword/newpassword">
+            <Newpassword />
+        </Route> 
+        <Route exact path="/Signup/otpresend">
+            <Resendotp />
+        </Route> 
         <Route exact path="/Booking">
             <Booking />
         </Route>
@@ -87,9 +105,9 @@ export default function Routes() {
             <BusRoute />
         </Route>
         {/* <ProtectedRoute path="/Cdetails" component={Cdetails} /> */}
-        <Route exact path="/Cprofile">
+        <Companyroute exact path="/Cprofile">
             <Cprofile />
-        </Route>
+        </Companyroute>
         <Route exact path="/Bconfirm">
             <Bconfirm />
         </Route>
@@ -99,9 +117,9 @@ export default function Routes() {
         <Route exact path="/Feedback">
             <Feedback />
         </Route>
-        <Route exact path="/Companyhome">
+        <Companyroute path="/Companyhome">
             <Companyhome />
-        </Route>
+        </Companyroute>
         <Route exact path="/Company/NewSchedule">
             <NewSchedule />
         </Route>
@@ -122,7 +140,17 @@ export default function Routes() {
         </Route>
         <Route exact path="/Payment">
             <Payment />
+        </Route> 
+        <Route exact path="/Bill">
+            <Bill />
         </Route>
+        <Route exact path="/Customer/SeatDetails">
+            <SeatDetails />
+        </Route>
+        <Route exact path="/Customer/BusCaller">
+            <BusCaller />
+        </Route>
+        
         <Route exact path="/Reservations"> 
         <Reservations /></Route>
         <Route exact path="/Search"> 
@@ -143,9 +171,9 @@ export default function Routes() {
         <Route path="/Clock" exact component={Clock} />
 
 
-        <Route>
+        {/* <Route>
             <NotFound />
-        </Route>
+        </Route> */}
 
     </Switch>
     </BrowserRouter>

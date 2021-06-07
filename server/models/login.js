@@ -41,6 +41,14 @@ let login = new Schema({
         type:Date,
         default:Date.now()
     },
+    url: {
+        type:String,
+        required:true
+    },
+    OTP: {
+        type:String,
+        required:true
+    }
 });
 module.exports = mongoose.model("user", login);
 // mongoose.model("login", Loginschema) 
