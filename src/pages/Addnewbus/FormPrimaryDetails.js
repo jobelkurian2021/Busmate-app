@@ -23,6 +23,7 @@ export default class FormPrimaryDetails extends Component {
     const { values, handleChange } = this.props;
 
     return (
+      <div>        <h3 align="center">Add new bus (Primary details)</h3>
       <Layout title="Add new bus (Primary details)">
         <div className="form-group">
           <label>Name *</label>
@@ -123,6 +124,8 @@ export default class FormPrimaryDetails extends Component {
           Continue to next form
         </button>
       </Layout>
+      </div>
+
     );
   }
 }

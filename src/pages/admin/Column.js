@@ -27,6 +27,10 @@ export const COLUMN=[
         accessor:'status'
     },
     {
+        Header:'Email Verifed?',
+        accessor:'OTP'
+    },
+    {
         Header: "Action",
         accessor: "id",
         Cell: ({ row }) => (

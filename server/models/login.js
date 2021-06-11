@@ -42,12 +42,12 @@ let login = new Schema({
         default:Date.now()
     },
     url: {
-        type:String,
-        required:true
+        type:String
+        // required:true
     },
     OTP: {
         type:String,
-        required:true
+        default:'not verified'
     }
 });
 module.exports = mongoose.model("user", login);

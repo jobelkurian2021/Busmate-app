@@ -10,6 +10,12 @@ const BillTemplate=new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "product"
     },
+    source:{
+        type:String
+    },
+    destination:{
+        type:String
+    },
     userid: {
         type: Schema.Types.ObjectId,
         ref: "user"

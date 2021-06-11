@@ -29,6 +29,9 @@ import Search from "./customer/Search";
 import Schedule from "./customer/Schedule";
 import NewSchedule from "./company/NewSchedule";
 import AddNewBus from "./Addnewbus";
+import AddBus from "./company/Bus/AddBus";
+import Allbus from "./company/Bus/Allbus";
+
 import Locations from "./admin/Locations";
 import AddLocation from "./admin/Locations/add";
 import Travels from "./admin/Travels";
@@ -44,7 +47,8 @@ import Resendotp from "./Login/resendotp";
 import BusCaller from "./booking/seats";
 import SeatDetails from "./booking/seats/seats";
 import { Companyroute } from "../components/routes/Company";
-
+import History from "../components/bill/History";
+import PHistory from "../components/invoice/History";
 
 export default function Routes() {
   return (
@@ -150,16 +154,23 @@ export default function Routes() {
         <Route exact path="/Customer/BusCaller">
             <BusCaller />
         </Route>
-        
+        <Route exact path="/Company/AddNewBus">
+            <AddBus />
+        </Route>
+        <Route exact path="/Company/Allbus">
+            <Allbus />
+        </Route>
         <Route exact path="/Reservations"> 
         <Reservations /></Route>
         <Route exact path="/Search"> 
         <Search /></Route>
         <Route exact path="/Schedule"> 
         <Schedule /></Route>
-
+        
         <Route path="/Customer/Payment" exact component={Pay} />
-
+        <Route path="/Customer/bill/History" exact component={History} />
+        <Route path="/Customer/Payment/History" exact component={PHistory} />
+        
         <Route path="/Company/AddBus" exact component={AddNewBus} />
         <Route path="/Admin/Locations" exact component={Locations} />
         <Route path="/Admin/Travels" exact component={Travels} />
@@ -171,9 +182,9 @@ export default function Routes() {
         <Route path="/Clock" exact component={Clock} />
 
 
-        {/* <Route>
+        <Route>
             <NotFound />
-        </Route> */}
+        </Route>
 
     </Switch>
     </BrowserRouter>

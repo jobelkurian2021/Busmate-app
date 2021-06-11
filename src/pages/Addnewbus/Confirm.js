@@ -19,6 +19,7 @@ export default class Confirm extends React.Component {
 	  : "none";
 	  
     return (
+      <div>        <h3 align="center">Add new bus (Image upload)</h3>
       <Layout title="Image uploader">
         <button
           className="btn btn-success submit-form"
@@ -39,6 +40,7 @@ export default class Confirm extends React.Component {
           defaultImage={values.image}
         />
       </Layout>
+      </div>
     );
   }
 }

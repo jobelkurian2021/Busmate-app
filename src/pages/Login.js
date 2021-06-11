@@ -26,7 +26,7 @@ export default function Login() {
      
         if(resp.data.message==='validuser') {
 
-          if(resp.data.data.status==="ACTIVE") { 
+          if(resp.data.data.status==="ACTIVE" && resp.data.data.OTP==="verified") { 
 
             if(resp.data.data.usetype==="Admin")
             {
@@ -47,6 +47,17 @@ export default function Login() {
              localStorage.setItem('role', resp.data.data.usetype);
             }
           } 
+          if(resp.data.data.OTP!=="verified"){
+            toast.error(`Please verify Email`,{
+              position: "bottom-right",
+              autoClose: 5000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined});
+              history.push("/Signup/otpresend");
+          }
              if(resp.data.data.status!=="ACTIVE"){
               toast.error(`Your account blocked! please contact admin`,{
                 position: "bottom-right",

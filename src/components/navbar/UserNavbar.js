@@ -61,6 +61,8 @@ changeTime() {
                      
                       <li><a href="/Bconfirm">Booking details</a></li>
                       <li><a href="/#">View Past Bookings</a></li>
+                      <li><a href="/Customer/bill/History">View Bill History</a></li>
+
               </ul>
               </li>
               <li className="dropdown"><a href="#"><span>User</span><i className="bi bi-chevron-down"></i></a>

@@ -42,7 +42,10 @@ let feedback = require("./models/nfeedback");
 let Nschedule = require("./models/nschedule");
 let Nlocation = require("./models/Location");
 let Bus= require("./models/Bus");
+let busSchema= require("./models/Bus");
 let Cart = require("./models/cart");
+let Bill = require("./models/Bill");
+
 const payment=require('./routes/payment');
 const bill=require('./routes/bill');
 
@@ -162,7 +165,7 @@ app.post("/api/forgotpassword", async (req, resp) => {
           resp.json({ message: "server error " });
         } 
         if (Login) {
-              if (Login.OTP=="verified") {
+              if (Login.OTP=="not verified") {
                 resp.status(200).json({ error: err, message: "NoT verified email" });
               }else{
 
@@ -350,7 +353,7 @@ app.get("/api/billGet",  (req, resp) => {
 app.put("/api/billsubmit",async (req,resp) => {
   try {
     console.log(req.body)
-    const filter = {userid:req.body.userid,status:0};
+    const filter = {userid:req.body.user,status:0};
     // Set some fields in that document
     const update = {
       "$set": {
@@ -359,7 +362,7 @@ app.put("/api/billsubmit",async (req,resp) => {
     };
     // Return the updated document instead of the original document
     const options = { returnNewDocument: true };
-    return billTemplatecopy.updateMany(filter, update, options)
+    return Cart.updateMany(filter, update, options)
       .then(updatedDocument => {
         if(updatedDocument) {
           resp.status(200).json({ message: "billed"});
@@ -380,7 +383,23 @@ app.put("/api/billsubmit",async (req,resp) => {
 }
   });
   
-
+  app.get("/api/bill/history", async (req, resp) => {
+    try{
+      Nbooking.find({})
+    .exec((err,billdata)=>{
+       if(err){
+        resp.json( {message : "bill section empty"});
+       }else{
+           resp.json(billdata);
+       }
+    });
+    }
+    catch(error){
+        return resp
+        .status(400)
+        .json({ error: err, message: "Error fetching data" });
+    }
+  });
 
   app.post("/api/payment/success", async (req, res) => {
     try {
@@ -402,7 +421,7 @@ app.put("/api/billsubmit",async (req,resp) => {
                                             // const update = {
                                               const create = new Cart({ 
                                             // "$set": {
-                                                "email":"aava@gadm.com",
+                                                "email":req.body.user,
                                                 "totalprice":"50",
                                                 "status":"cashpayed",
                                                 "payorderid":req.body.razorpayOrderId,
@@ -455,6 +474,26 @@ app.put("/api/billsubmit",async (req,resp) => {
     }
   });
 
+  app.get("/api/payment/history", async (req, resp) => {
+    try{
+      Cart.find({})
+    .exec((err,billdata)=>{
+       if(err){
+        resp.json( {message : "No Payment History Found"});
+       }else{
+           resp.json(billdata);
+       }
+    });
+    }
+    catch(error){
+        return resp
+        .status(400)
+        .json({ error: err, message: "Error fetching data" });
+    }
+  });
+
+
+
   app.post("/api/otpresend", async (req, resp) => {
     try {
       Login
@@ -465,7 +504,7 @@ app.put("/api/billsubmit",async (req,resp) => {
           } 
           if (Login) {
                 if (Login.OTP==="verified") {
-                  resp.status(200).json({ error: err, message: "Alearedy verified" });
+                  resp.status(200).json({ error: err, message: "Aleardy verified" });
                 }else{
   
                   let info = { email: req.body.email, password: Login.password };
@@ -558,45 +597,96 @@ app.put("/api/billsubmit",async (req,resp) => {
    });
    });
 
-// app.post('/api/addbus',async (req,res)=>{
-// // exports.create = async (req, res) => {
-//   const busExists = await Bus.findOne({ busNumber: req.body.busNumber });
-//   if (busExists)
-//     return res.status(403).json({
-//       error: "Bus is already added!"
-//     });
+app.post('/api/addbus',async (req,resp)=>{
+  const bus = new Bus({
+    name:req.body.name,
+    busNumber:req.body.bno,
+    type:req.body.type,
+    startLocation:req.body.sourcedrop,
+    endLocation:req.body.destinationdrop,
+    travel:req.body.travels,
+    journeyDate:req.body.date,
+    departure_time:req.body.time,
+    numberOfSeats:req.body.noofSeats,
+    fare:req.body.fare,
+    boardingPoints:req.body.bpoints,
+    droppingPoints:req.body.dpoints
+})
+bus.save()
+.then(data=>{
+    console.log(data)
+    // res.send(data)
+    resp.status(200).json({ message: "bus added"});
+})
+.catch((error) => {
+  resp.status(400).json({ error: error, message: " error " });
+});
+});
 
-//   if (req.file !== undefined) {
-//     const { filename: image } = req.file;
+// exports.create = async (req, res) => {
+  // const busExists = await Bus.findOne({ busNumber: req.body.busNumber });
+  // if (busExists)
+  //   return res.status(403).json({
+  //     error: "Bus is already added!"
+  //   });
 
-//     //Compress image
-//     await sharp(req.file.path)
-//       .resize(800)
-//       .jpeg({ quality: 100 })
-//       .toFile(path.resolve(req.file.destination, "resized", image));
-//     fs.unlinkSync(req.file.path);
-//     req.body.image = "busimage/resized/" + image;
-//   }
-
-//   if (req.body.boardingPoints) {
-//     req.body.boardingPoints = req.body.boardingPoints.split(",");
-//   }
+  // if (req.body.boardingPoints) {
+  //   req.body.boardingPoints = req.body.boardingPoints.split(",");
+  // }
  
-//   if (req.body.droppingPoints) {
-//     req.body.droppingPoints = req.body.droppingPoints.split(",");
-//   }
-
-//   const bus = new Bus(req.body);
-
-//   // if (!checkDateAvailability(req.body.journeyDate)) {
-//   //   bus.isAvailable = false;
-//   // }
-
-//   bus.owner = req.ownerauth;
-
-//   await bus.save();
-
-//   res.json(bus);
+  // if (req.body.droppingPoints) {
+  //   req.body.droppingPoints = req.body.droppingPoints.split(",");
+  // }
+  
+    // busSchema.create({name:req.query.name,type:req.query.type,
+    //   busNumber:req.query.busNumber,
+    //   fare: req.query.fare,
+    //   features:req.query.features,
+    //   description:req.query.description,
+    //   seatsAvailable:req.query.seatsAvailable,
+    //   numberOfSeats:req.query.numberOfSeats,
+    //   departure_time:req.query.departure_time,
+    //   isAvailable:req.query.isAvailable,
+    //   startLocation: req.query.startLocation,
+    //   locations:req.query.locations,
+    //   travels:req.query.travels,
+    //   travel:req.query.travel,
+    //   endLocation:req.query.endLocation,
+    //   journeyDate:req.query.journeyDate,
+    //   boardingPoints:req.query.boardingPoints,
+    //   droppingPoints:req.query.droppingPoints})
+      
+//   const bus = new busSchema({
+//     name:req.body.name,
+//     type:req.body.type,
+//     busNumber:req.body.busNumber,
+//     fare: req.body.fare,
+//     features:req.body.features,
+//     // description:req.body.description,
+//     // seatsAvailable:req.body.seatsAvailable,
+//     numberOfSeats:req.body.noofSeats,
+//     departure_time:req.body.time,
+//     isAvailable:req.body.isAvailable,
+//     startLocation: req.body.sourcedrop,
+//     // locations:req.body.locations,
+//     travels:req.body.travels,
+//     // travel:req.body.travel,
+//     endLocation:req.body.destinationdrop,
+//     journeyDate:req.body.date,
+//     boardingPoints:req.body.bpoints,
+//     droppingPoints:req.body.dpoints
+//     // image: req.body.image
+// })
+// bus.save()
+// .then(data=>{
+//     console.log(data)
+//     // res.send(data)
+//     resp.status(200).json({ message: "Added Bus"});
+// })
+// .catch((error) => {
+//   resp.status(400).json({ error: error, message: " error " });
+// });
+  
 
 // });
 

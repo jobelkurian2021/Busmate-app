@@ -18,6 +18,7 @@ export default class FormAdditionalDetails extends Component {
     console.log(values);
 
     return (
+      <div>        <h3 align="center">Add new bus (Additional details)</h3>
       <Layout title="Add new bus (Additional details)">
         <div className="form-group">
           <label>Additional Features</label>
@@ -127,6 +128,7 @@ export default class FormAdditionalDetails extends Component {
           Continue to submit
         </button>
       </Layout>
+      </div>
     );
   }
 }

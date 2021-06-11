@@ -20,10 +20,10 @@ const {
 
 const { uploadBusImage } = require("../helpers");
 
-router
-  .route("/")
-  .get(getBuses)
-  .post(uploadBusImage, addNewBus);
+// router
+//   .route("/")
+//   .get(getBuses)
+//   .post(addNewBus);
 
 router.get(
   "/owner-bus-available",
