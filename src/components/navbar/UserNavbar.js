@@ -60,15 +60,17 @@ changeTime() {
               <ul>
                      
                       <li><a href="/Bconfirm">Booking details</a></li>
-                      <li><a href="/#">View Past Bookings</a></li>
+                      <li><a href="/Customer/Payment/History">View Past Bookings</a></li>
                       <li><a href="/Customer/bill/History">View Bill History</a></li>
 
               </ul>
               </li>
-              <li className="dropdown"><a href="#"><span>User</span><i className="bi bi-chevron-down"></i></a>
+              <li className="dropdown">
+              <a >Welcome &nbsp;<span>{localStorage.getItem('name')}</span><i className="bi bi-chevron-down"></i></a>
+                {/* <a href="#"><span>User</span><i className="bi bi-chevron-down"></i>  </a> */}
               <ul>
 
-                      <li><a href="/Profile">Edit Profile</a></li>
+                      <li><a href="/Customer/Profile">Edit Profile</a></li>
                       <li><a href="/home" onClick={this.props.logout}>Logout</a></li>
 
               </ul>
@@ -76,17 +78,20 @@ changeTime() {
               
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
-          </nav>
-    
-          {/* <div className="header-social-links d-flex">
-             <a href="#" className="twitter"><i className="bu bi-twitter"></i></a> 
-            <a href="#" className="facebook"><i className="bu bi-facebook"></i></a>
-            <a href="#" className="instagram"><i className="bu bi-instagram"></i></a>
-          </div> */}
-          <div className="header-social-links d-flex">
-        <h3>&nbsp;&nbsp;{this.state.date.toLocaleTimeString()}.</h3>
+            <div 
+          className="header-social-links d-flex"
+          >
+          {/* <li><a >Welcome &nbsp;<span>{localStorage.getItem('name')}</span></a></li> */}
+
+          {/* </div>
+          <div className="header-social-links d-flex"> */}
+            <li><a >{this.state.date.toLocaleTimeString()}</a></li>
         </div>
 
+          </nav>
+    
+          
+          
         </div>
 
       </header>

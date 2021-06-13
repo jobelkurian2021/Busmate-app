@@ -9,11 +9,14 @@ import AdminNavbar from "../../components/navbar/Adminnavbar";
 import '../css/backup/app1.css';
 export default function Adminhome() {
     return (
-		<div >
-		<AdminNavbar />
 		<div className="Login">
-		<h2 align="center">	Welcome Admin</h2>
-		</div>
+					{/* <h3 align="right">Welcome <span>{localStorage.getItem('name')}</span></h3> */}
+
+		<AdminNavbar />
+		{/* <div className="Login"> */}
+		<h2 align="center">	Admin Home</h2>
+
+		{/* </div> */}
 		</div>
 
     );

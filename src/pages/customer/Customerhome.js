@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from "react";
-import Table from '../../components/Table/Table'
+// import Table from '../../components/Table/Table'
 import { IoArrowBackCircle } from "react-icons/io5";
 import { Button} from "react-bootstrap";
 import axios from "axios";
 import Search from "./Search";
 // import Customer from "./Customer";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 import UserNavbar from "../../components/navbar/UserNavbar";
 // import { useHistory } from "react-router-dom";
@@ -29,10 +29,10 @@ export default function Customerhome() {
     // const email= localStorage.getItem("myemail"),
     // const role= localStorage.getItem("role"),
     const [DataSou, setDataSou] = useState([]);
-    const [DataBrand, setDataBrand] = useState([]);
+    const [DataBrand] = useState([]);
   
     const [TABLE, setTable] = useState(false);
-    const [DATA, setData] = useState("data");
+    // const [DATA, setData] = useState("data");
 
     useEffect(() => {
         try {
@@ -89,6 +89,7 @@ export default function Customerhome() {
     <div>
         <UserNavbar/>
         <div className="Login">
+        {/* <h4 align="right">Welcome <span>{localStorage.getItem('name')}</span></h4><br/> */}
         {/* <h2>It is {time.toLocaleTimeString()}.</h2> */}
            {/* <h2 align="center">Customer Home</h2> */}
            <div className="p-4 m-3">

@@ -18,7 +18,7 @@ import "./index.css";
 toast.configure()
 
 export default function Signup() {
-  const [usetype, setusetype] = useState(false);
+  const [ setusetype] = useState(false);
 
   const userdropdown = (e) => {
     if (e.target.value === "user") {

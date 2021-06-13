@@ -26,12 +26,20 @@ import Bill from "../components/bill/bill";
 // import  Payment from "./admin/Payment";
 import Reservations from "./customer/Reservations";
 import Search from "./customer/Search";
+import SearchCard from "./customer/Searchcard";
+import UserProfile from "./customer/UserProfile";
+import CompanyProfile from "./company/CompanyProf";
+import AdminProfile from "./admin/AdminProf";
+
+
 import Schedule from "./customer/Schedule";
 import NewSchedule from "./company/NewSchedule";
 import AddNewBus from "./Addnewbus";
 import AddBus from "./company/Bus/AddBus";
-import Allbus from "./company/Bus/Allbus";
+import AddaBus from "./company/AddBus";
 
+import Allbus from "./company/Bus/Allbus";
+import AddBusNew from "./company/Bus/FormPrimaryDetails";
 import Locations from "./admin/Locations";
 import AddLocation from "./admin/Locations/add";
 import Travels from "./admin/Travels";
@@ -148,6 +156,15 @@ export default function Routes() {
         <Route exact path="/Bill">
             <Bill />
         </Route>
+        <Route exact path="/Company/Profile">
+            <CompanyProfile />
+        </Route>
+        <Route exact path="/Admin/Profile">
+            <AdminProfile />
+        </Route>
+        <Route exact path="/Customer/Profile">
+            <UserProfile />
+        </Route>
         <Route exact path="/Customer/SeatDetails">
             <SeatDetails />
         </Route>
@@ -157,6 +174,10 @@ export default function Routes() {
         <Route exact path="/Company/AddNewBus">
             <AddBus />
         </Route>
+        <Route exact path="/Company/AddaBus">
+            <AddaBus />
+        </Route>
+        
         <Route exact path="/Company/Allbus">
             <Allbus />
         </Route>
@@ -164,6 +185,9 @@ export default function Routes() {
         <Reservations /></Route>
         <Route exact path="/Search"> 
         <Search /></Route>
+        <Route exact path="/Customer/SearchCard"> 
+        <SearchCard /></Route>
+        
         <Route exact path="/Schedule"> 
         <Schedule /></Route>
         

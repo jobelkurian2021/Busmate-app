@@ -38,9 +38,9 @@ class EditLocation extends Component {
   submit = async e => {
     e.preventDefault();
     const {
-      location: { _id, place, district },
-      error,
-      loading,
+      location: { _id },
+      // error,
+      // loading,
     } = this.state;
 
     const resp = await updateLocation(_id, this.state.location).catch(err => {

@@ -28,25 +28,25 @@ const busSchema = new mongoose.Schema(
       required: true,
       maxlength: 32
     },
-    features: {
-      type: []
-    },
-    description: {
-      type: String,
-      maxlength: 2000
-    },
-    seatsAvailable: {
-      type: Number,
-      trim: true,
-      default: 30,
-      maxlength: 32
-    },
-    bookedSeat: {
-      type: []
-    },
-    soldSeat: {
-      type: []
-    },
+    // features: {
+    //   type: []
+    // },
+    // description: {
+    //   type: String,
+    //   maxlength: 2000
+    // },
+    // seatsAvailable: {
+    //   type: Number,
+    //   trim: true,
+    //   default: 30,
+    //   maxlength: 32
+    // },
+    // bookedSeat: {
+    //   type: []
+    // },
+    // soldSeat: {
+    //   type: []
+    // },
     numberOfSeats: {
       type: Number,
       trim: true,

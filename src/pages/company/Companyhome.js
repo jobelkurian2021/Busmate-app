@@ -14,12 +14,14 @@ import CompanyNavbar from "../../components/navbar/CompanyNavbar";
 //         </div>
 //     )
 // }
+
+
 class Companyhome extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = { apiResponse: "" };
     }
-    
+
     handleLogout = () => {
       this.setState(this.baseState)
       localStorage.clear()
@@ -33,6 +35,7 @@ class Companyhome extends Component {
         />
         <div className="Login">
  		<h2 align="center">	Company Home</h2>
+         {/* <br/><h3 align="center">Welcome <span>{localStorage.getItem('name')}</span></h3> */}
         </div>
         {/* <Col>
             <Router>

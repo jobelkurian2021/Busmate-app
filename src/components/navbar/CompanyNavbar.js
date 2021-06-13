@@ -16,28 +16,34 @@ class CompanyNavbar extends Component {
           <nav id="navbar" className="navbar order-last order-lg-0">
             <ul>
               <li><a href="/CompanyHome" className="active">Home</a></li>
-              
+              <li className="dropdown"><a ><span>Company</span><i className="bi bi-chevron-down"></i></a>
+              <ul>
               <li><a href="/Cprofile">Company profile</a></li>
               <li><a href="/Cdetails">Company details</a></li>
-
-              <li className="dropdown"><a href="#"><span>My Bus Schedules</span><i className="bi bi-chevron-down"></i></a>
+              </ul>
+              </li>
+              <li className="dropdown"><a ><span>My Bus Schedules</span><i className="bi bi-chevron-down"></i></a>
               <ul>
               <li><a href="/Company/AddBus">Add New Bus</a></li>
                     <li><a href="/Company/NewSchedule">Add New Schedule</a></li>
-                      <li><a href="/#">View my Bus Schedules</a></li>
+                      <li><a href="/Company/Allbus">View my Bus Schedules</a></li>
               </ul>
               </li>
-              <li className="dropdown"><a href="#"><span>Ticket Bookings</span><i className="bi bi-chevron-down"></i></a>
+              <li className="dropdown"><a ><span>Ticket Bookings</span><i className="bi bi-chevron-down"></i></a>
               <ul>
                      
-                    <li><a href="#">Pending Transactions</a></li>
-                      <li><a href="/#">View All Transactions</a></li>
+                    <li><a >Pending Transactions</a></li>
+                      <li><a href="/Customer/Payment/History">View All Transactions</a></li>
+                      <li><a href="/Customer/bill/History">Bill History</a></li>
               </ul>
               </li>
-              <li className="dropdown"><a href="#"><span>Company</span><i className="bi bi-chevron-down"></i></a>
+              <li className="dropdown">
+              {/* <a >Welcome &nbsp;<span>{localStorage.getItem('name')}</span><i className="bi bi-chevron-down"></i></a> */}
+
+                <a href="/CompanyHome"><span>Company</span><i className="bi bi-chevron-down"></i></a>
               <ul>
 
-                      <li><a href="/Profile">Edit Profile</a></li>
+                      <li><a href="/Company/Profile">Edit Profile</a></li>
                       <li><a href="/home" onClick={this.props.logout}>Logout</a></li>
 
               </ul>
@@ -45,14 +51,13 @@ class CompanyNavbar extends Component {
               
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
-          </nav>
-    
-          <div className="header-social-links d-flex">
-            {/* <a href="#" className="twitter"><i className="bu bi-twitter"></i></a> */}
-            <a href="#" className="facebook"><i className="bu bi-facebook"></i></a>
-            <a href="#" className="instagram"><i className="bu bi-instagram"></i></a>
+            <div 
+          className="header-social-links d-flex"
+          >
+          <li><a >Welcome &nbsp;<span>{localStorage.getItem('name')}</span></a></li>
+
           </div>
-    
+          </nav>
         </div>
       </header>
     );

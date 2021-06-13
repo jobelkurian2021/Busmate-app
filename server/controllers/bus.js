@@ -31,8 +31,8 @@ exports.getBuses = async (req, res) => {
 
 exports.getAllAvailableBuses = async (req, res) => {
   const buses = await Bus.find({ isAvailable: true })
-    .populate("owner", "name phone")
-    .populate("travel", "name")
+    // .populate("owner", "name phone")
+    // .populate("travel", "name")
     .sort({ created: -1 });
 
   res.json(buses);
@@ -107,17 +107,17 @@ exports.addNewBus = async (req, res) => {
       error: "Bus is already added!"
     });
 
-  if (req.file !== undefined) {
-    const { filename: image } = req.file;
+  // if (req.file !== undefined) {
+  //   const { filename: image } = req.file;
 
-    //Compress image
-    await sharp(req.file.path)
-      .resize(800)
-      .jpeg({ quality: 100 })
-      .toFile(path.resolve(req.file.destination, "resized", image));
-    fs.unlinkSync(req.file.path);
-    req.body.image = "busimage/resized/" + image;
-  }
+  //   //Compress image
+  //   await sharp(req.file.path)
+  //     .resize(800)
+  //     .jpeg({ quality: 100 })
+  //     .toFile(path.resolve(req.file.destination, "resized", image));
+  //   fs.unlinkSync(req.file.path);
+  //   req.body.image = "busimage/resized/" + image;
+  // }
 
   if (req.body.boardingPoints) {
     req.body.boardingPoints = req.body.boardingPoints.split(",");
@@ -127,15 +127,45 @@ exports.addNewBus = async (req, res) => {
     req.body.droppingPoints = req.body.droppingPoints.split(",");
   }
 
-  const bus = new Bus(req.body);
+  const bus1 = new Bus(req.body);
 
   // if (!checkDateAvailability(req.body.journeyDate)) {
   //   bus.isAvailable = false;
   // }
+  const bus = new Bus({
+    name:req.body.name,
+    type:req.body.type,
+    busNumber:req.body.busNumber,
+    fare: req.body.fare,
+    features:req.body.features,
+    description:req.body.description,
+    seatsAvailable:req.body.seatsAvailable,
+    numberOfSeats:req.body.numberOfSeats,
+    departure_time:req.body.departure_time,
+    isAvailable:req.body.isAvailable,
+    startLocation: req.body.startLocation,
+    locations:req.body.locations,
+    travels:req.body.travels,
+    travel:req.body.travel,
+    endLocation:req.body.endLocation,
+    journeyDate:req.body.journeyDate,
+    boardingPoints:req.body.boardingPoints,
+    droppingPoints:req.body.droppingPoints,
+    image: req.body.image
+})
+bus.save()
+.then(data=>{
+    console.log(data)
+    // res.send(data)
+    resp.status(200).json({ message: "Added Bus"});
+})
+.catch((error) => {
+  resp.status(400).json({ error: error, message: " error " });
+});
 
-  bus.owner = req.ownerauth;
+  bus1.owner = req.ownerauth;
 
-  await bus.save();
+  await bus1.save();
 
   res.json(bus);
 };

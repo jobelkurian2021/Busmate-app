@@ -17,7 +17,7 @@ import CompanyNavbar from "../../components/navbar/CompanyNavbar";
 toast.configure()
 
 export default function NewSchedule() {
-  const [usetype, setusetype] = useState(false);
+  const [ setusetype] = useState(false);
 
   const userdropdown = (e) => {
     if (e.target.value === "LS") {

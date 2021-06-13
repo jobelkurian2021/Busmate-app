@@ -17,7 +17,7 @@ import AdminNavbar from "../../components/navbar/Adminnavbar";
 toast.configure()
 
 export default function Addroute() {
-  const [usetype, setusetype] = useState(false);
+  const [ setusetype] = useState(false);
 
   const userdropdown = (e) => {
     if (e.target.value === "LS") {

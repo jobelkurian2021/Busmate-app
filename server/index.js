@@ -42,7 +42,7 @@ let feedback = require("./models/nfeedback");
 let Nschedule = require("./models/nschedule");
 let Nlocation = require("./models/Location");
 let Bus= require("./models/Bus");
-let busSchema= require("./models/Bus");
+let busSchema= require("./models/Bus1");
 let Cart = require("./models/cart");
 let Bill = require("./models/Bill");
 
@@ -311,7 +311,7 @@ app.post("/api/payment/orders", async (req, res) => {
       });
 
       const options = {
-          amount: parseInt(req.body.rps)*100, // amount in smallest currency unit
+          amount: parseInt(req.body.fare2)*100, // amount in smallest currency unit
           currency: "INR",
           receipt: req.body.loginid,
       };
@@ -385,7 +385,7 @@ app.put("/api/billsubmit",async (req,resp) => {
   
   app.get("/api/bill/history", async (req, resp) => {
     try{
-      Nbooking.find({})
+      Cart.find({})
     .exec((err,billdata)=>{
        if(err){
         resp.json( {message : "bill section empty"});
@@ -421,14 +421,15 @@ app.put("/api/billsubmit",async (req,resp) => {
                                             // const update = {
                                               const create = new Cart({ 
                                             // "$set": {
-                                                "email":req.body.user,
-                                                "totalprice":"50",
+                                                "email":req.body.email,
+                                                "totalprice":req.body.totalprice,
                                                 "status":"cashpayed",
                                                 "payorderid":req.body.razorpayOrderId,
                                                 "payementid":req.body.razorpayPaymentId,
                                                 "name":req.body.name,
                                                 "source":req.body.source,
                                                 "destination":req.body.destination,
+                                                "noofpassengers":req.body.noofpassengers,
                                               })
                                             // }
                                             // };
@@ -597,7 +598,68 @@ app.put("/api/billsubmit",async (req,resp) => {
    });
    });
 
-app.post('/api/addbus',async (req,resp)=>{
+
+   
+
+app.get('/api/bus/search',async (req,resp)=>{
+  // if (_.size(req.query) < 1)
+  // return res.status(400).json({ error: "Invalid query" });
+
+// const { startLocation, endLocation, journeyDate } = req.query;
+
+const startLocation= req.body.sourcedrop;
+const endLocation= req.body.destinationdrop;
+
+const bus = await Bus.find({
+  // startLocation,
+  // endLocation,
+  // journeyDate,
+  // isAvailable: true
+})
+  // .populate("travel", "name")
+  // .populate("startLocation", "name")
+  // .populate("endLocation", "name");
+  resp.status(200).json({
+    message: "bus",
+  });
+return resp.json(bus);
+});
+
+router.post("/api/Search", async (req, resp) => {
+// router.get("/api/search/bus", async (req, resp) => {
+  try{
+    const source = req.body.source;
+    const destination = req.body.destination;
+
+    Bus.find({
+      // email:req.body.email
+      // "startLocation": "Kottayam", "endLocation": "Cherthala"
+      "startLocation": req.body.source, "endLocation": req.body.destination
+
+      // startLocation:req.body.source,
+      // endLocation:req.body.destination
+    }) 
+    // .populate("travel", "name")
+    // .populate("startLocation", "name")
+    // .populate("endLocation", "name")
+  .exec((err,bus)=>{
+     if(err){
+      req.json( {message : "No data found"});
+      resp.redirect("/home");
+     }else{
+         resp.json(bus);
+     }
+  });
+  }
+  catch(error){
+      return resp
+      .status(400)
+      .json({ error, message: "Error fetching data" });
+  }
+});
+
+
+app.post('/api/bus/addbus',async (req,resp)=>{
   const bus = new Bus({
     name:req.body.name,
     busNumber:req.body.bno,

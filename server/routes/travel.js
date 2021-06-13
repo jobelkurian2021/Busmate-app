@@ -8,7 +8,8 @@ const {
   read,
   remove,
   getTravels,
-  travelById
+  travelById,
+  SearchBus
 } = require("../controllers/travel");
 
 router

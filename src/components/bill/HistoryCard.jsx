@@ -2,13 +2,13 @@ import React from 'react'
 import {Card} from "react-bootstrap";
 
 export default function HistoryCard({data}) {
- let Date =data.date;
-   let options = {
-  year: 'numeric', month: 'numeric', day: 'numeric',
-  hour: 'numeric', minute: 'numeric', second: 'numeric',
-  hour12: false,
-  timeZone: 'Asia/Kolkata'
-};
+//  let Date =data.date;
+//    let options = {
+//   year: 'numeric', month: 'numeric', day: 'numeric',
+//   hour: 'numeric', minute: 'numeric', second: 'numeric',
+//   hour12: false,
+//   timeZone: 'Asia/Kolkata'
+// };
 
     return (
         <Card
@@ -24,8 +24,8 @@ export default function HistoryCard({data}) {
         <span> Email:: {data.email} ||</span><br/>
          <span> Source:: {data.source} ||</span>
           <span> Destination:: {data.destination} ||</span>
-          <span> No of Passengers:: {data.no} ||</span><br/>
-          {/* <span> Total amount:: {data.totalprice} ||</span><br/> */}
+          <span> No of Passengers:: {data.noofpassengers} ||</span><br/>
+          <span> Total amount:: {data.totalprice} ||</span><br/>
           <span> Travel DATE:: {data.date} ||</span>
           
         </Card.Text>

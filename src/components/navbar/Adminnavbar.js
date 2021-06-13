@@ -17,15 +17,15 @@ class Adminnavbar extends Component {
             <ul>
               <li><a href="/AdminHome" className="active">Home</a></li>
     
-              <li className="dropdown"><a href="#"><span>Manage</span><i className="bi bi-chevron-down"></i></a>
+              <li className="dropdown"><a href="/Admin/Users"><span>Manage</span><i className="bi bi-chevron-down"></i></a>
               <ul>
                      
                       <li><a href="/Admin/Users">Manage Users</a></li>
                       <li><a href="/Admin/Bookings">All Bookings</a></li>
-                      <li><a href="/Profile">Edit Profile</a></li>
+                      <li><a href="/Admin/Profile">Edit Profile</a></li>
               </ul>
               </li>
-              <li className="dropdown"><a href="#"><span>Manage Routes</span><i className="bi bi-chevron-down"></i></a>
+              <li className="dropdown"><a href="/Admin/BusRoute"><span>Manage Routes</span><i className="bi bi-chevron-down"></i></a>
               <ul>
                      
                       <li><a href="/Admin/AddRoute">Add New Route</a></li>
@@ -42,14 +42,21 @@ class Adminnavbar extends Component {
               <li><a href="/home">Logout</a></li>
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
-          </nav>
-    
-          <div className="header-social-links d-flex">
+            <div 
+          className="header-social-links d-flex"
+          >
+          <li><a >Welcome &nbsp;<span>{localStorage.getItem('name')}</span></a></li>
+
             {/* <a href="#" className="twitter"><i className="bu bi-twitter"></i></a> */}
-            <a href="#" className="facebook"><i className="bu bi-facebook"></i></a>
-            <a href="#" className="instagram"><i className="bu bi-instagram"></i></a>
+            {/* <a  className="facebook"><i className="bu bi-facebook"></i></a>
+            <a  className="instagram"><i className="bu bi-instagram"></i></a> */}
           </div>
     
+          </nav>
+    
+         
+
+          
         </div>
       </header>
     );

@@ -8,7 +8,7 @@ import {toast} from 'react-toastify';
 import axios from "axios";
 // import DeletButton  from "./DeletButton"
 // import  QuantityButton from "./QuantityButton";
-import logo from "./logo.jpg";
+// import logo from "./logo.jpg";
 
 import UserNavbar from "../../components/navbar/UserNavbar";
 
@@ -20,7 +20,7 @@ export default function Bill() {
   
 const email =localStorage.getItem('myemail');
 const [DATA, setData] = useState([]);
-const [finavalues, setvalues] = useState(0)
+const [ setvalues] = useState(0)
 const [spinner, setspinner] = useState(true)
 
 const email1 = localStorage.getItem("myemail");
@@ -38,8 +38,8 @@ const email1 = localStorage.getItem("myemail");
             .then((resp) => {
 
               const response = resp.data;
-              const name= resp.data.name;
-            const phone = resp.data.phone;
+              // const name= resp.data.name;
+            // const phone = resp.data.phone;
               //  console.log(response)
               setData(response);
               

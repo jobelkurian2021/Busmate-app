@@ -3,7 +3,7 @@ import Layout from "../../../components/core/Layout";
 import Swal from "sweetalert2";
 import showError from "../../../components/core/Error";
 import showLoading from "../../../components/core/Loading";
-import districtJson from "../../../components/Utils/helpers/district.json";
+// import districtJson from "../../../components/Utils/helpers/district.json";
 import { getATravel, updateTravel } from "../../../components/Utils/Requests/Travel";
 
 class EditTravel extends Component {
@@ -35,9 +35,9 @@ class EditTravel extends Component {
   submit = async e => {
     e.preventDefault();
     const {
-      travel: { _id, name },
-      error,
-      loading,
+      travel: { _id },
+      // error,
+      // loading,
     } = this.state;
 
     const resp = await updateTravel(_id, this.state.travel).catch(err => {

@@ -15,6 +15,10 @@ const cart1 = new mongoose.Schema({
         type:String,
         required:true
     },
+    price: {
+        type:Number,
+        required:true
+    }, 
     totalprice: {
         type:Number,
         required:true
@@ -30,7 +34,16 @@ const cart1 = new mongoose.Schema({
     date: {
         type:Date,
         default:Date.now
-    }
+    },
+    status:{
+        type:String
+    },
+    name:{
+        type:String
+    },
+    noofpassengers:{
+        type:Number
+    },
 });
 
 module.exports=mongoose.model('order',cart1)

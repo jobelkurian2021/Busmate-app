@@ -3,10 +3,10 @@ import Layout from "../../../components/core/Layout";
 import ReactDatatable from "@ashvin27/react-datatable";
 import moment from "moment";
 import Swal from "sweetalert2";
-import axios from "axios";
+// import axios from "axios";
 import {
   getAllLocations,
-  getLocations,
+  // getLocations,
   removeLocation
 } from "../../../components/Utils/Requests/Location";
 import Loading from "../../../components/core/Loading";

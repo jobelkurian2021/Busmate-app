@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import {Link} from 'react-router-dom';
@@ -33,18 +33,23 @@ export default function Login() {
               history.push("/admin/home");
                 localStorage.setItem('myemail', resp.data.email);
                 localStorage.setItem('role', resp.data.data.usetype);
+                localStorage.setItem('name', resp.data.data.name);
+
             }
             if(resp.data.data.usetype==="User")
             {
               history.push("/customerhome");
              localStorage.setItem('myemail', resp.data.email);
              localStorage.setItem('role', resp.data.data.usetype);
+             localStorage.setItem('name', resp.data.data.name);
+
             }
             if(resp.data.data.usetype==="Company")
             {
               history.push("/companyhome");
              localStorage.setItem('myemail', resp.data.email);
              localStorage.setItem('role', resp.data.data.usetype);
+             localStorage.setItem('name', resp.data.data.name);
             }
           } 
           if(resp.data.data.OTP!=="verified"){

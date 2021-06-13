@@ -1,4 +1,5 @@
 const Travel = require("../models/Travel");
+const Bus = require("../models/Bus");
 const _ = require("lodash");
 
 exports.travelById = async (req, res, next, id) => {
@@ -47,4 +48,14 @@ exports.remove = async (req, res) => {
   await travel.remove();
 
   res.json({ message: "Travel removed successfully" });
+};
+
+exports.SearchBus = async (req, res) => {
+  const startLocation= req.body.sourcedrop;
+  const endLocation= req.body.destinationdrop;
+
+  const travel = await Bus.find({startLocation,
+    endLocation}).sort({ name: 1 });
+
+  res.json(travel);
 };

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import {Card} from "react-bootstrap";
 import { Button,Spinner} from "react-bootstrap";
 import easyinvoice from 'easyinvoice';
@@ -10,20 +10,22 @@ toast.configure()
 export default function HistoryCard({data}) {
  let date =data.date;
 
-   let options = {
-  year: 'numeric', month: 'numeric', day: 'numeric',
-  hour: 'numeric', minute: 'numeric', second: 'numeric',
-  hour12: false,
-  timeZone: 'Asia/Kolkata'
-};
+//    let options = {
+//   year: 'numeric', month: 'numeric', day: 'numeric',
+//   hour: 'numeric', minute: 'numeric', second: 'numeric',
+//   hour12: false,
+//   timeZone: 'Asia/Kolkata'
+// };
 const email = data.email;
 const source = data.source;
 const destination =data.destination;
 const payementid = data.payementid;
 const payorderid = data.payorderid;
+// const noofpassengers= data.noofpassengers;
 
-const [DATA, setData] = useState([data]);
-const [finavalues, setvalues] = useState(0)
+
+const [DATA] = useState([data]);
+// const [finavalues, setvalues] = useState(0)
 const [spinner, setspinner] = useState(true)
 const generate =async()=>{
   setspinner(false);
@@ -31,12 +33,12 @@ const generate =async()=>{
     return (
         {  
         
-            "quantity": "2",
+            "quantity": data.noofpassengers,
             "description": "Ticket Charges",
             "destination":data.destination,
             "date":data.date,
             "time":data.time,
-            "tax": 2,
+            "tax": 0,
             "price": data.totalprice
         }
     
@@ -105,8 +107,10 @@ window.location = "../../../Customer/Payment/History"
          <span> Source:: {data.source} ||</span>
           <span> Destination:: {data.destination} ||</span>
           <span> Total amount:: {data.totalprice} ||</span><br/>
+          <span> No of passengers:: {data.noofpassengers} ||</span>
+          <span> Payment ID:: {data.payementid} ||</span><br/>
+          <span> Total amount:: {data.totalprice} ||</span>
           <span> Travel DATE:: {data.date} ||</span>
-          <span> Payment ID:: {data.payementid} ||</span>
         </Card.Text>
         <Button variant="danger" onClick={()=>generate()}>{spinner ?"Generate Pdf":<Spinner animation="border" />}<FaFilePdf/> </Button>
       </Card.Body>

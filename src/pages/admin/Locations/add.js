@@ -13,7 +13,7 @@ class AddLocation extends Component {
     place: "",
     districts: [],
     loading: "",
-    district: "Kottayam"
+    district: ""
   };
 
   componentDidMount() {
