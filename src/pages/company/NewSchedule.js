@@ -21,10 +21,10 @@ export default function NewSchedule() {
 
   const userdropdown = (e) => {
     if (e.target.value === "LS") {
-      setusetype(true);
+      // setusetype(true);
       
     } else {
-      setusetype(false);
+      // setusetype(false);
     }
   };
   const initialValues = {

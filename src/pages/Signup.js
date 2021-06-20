@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-// import Dropdown from 'react-bootstrap/Dropdown';
-// import DropdownButton from 'react-bootstrap/DropdownButton';
 import {Link} from 'react-router-dom';
-// import { Container, Row, Col, Button, Form } from "react-bootstrap";
-
 import { Button, Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -18,7 +12,7 @@ import "./index.css";
 toast.configure()
 
 export default function Signup() {
-  const [ setusetype] = useState(false);
+  const [usetype, setusetype] = useState(false);
 
   const userdropdown = (e) => {
     if (e.target.value === "user") {
@@ -29,7 +23,6 @@ export default function Signup() {
     }
   };
 
-  // formik staarted here
   const initialValues = {
     name: "",
     email: "",
@@ -203,52 +196,6 @@ export default function Signup() {
   )}
 </Form.Group>
 
-{/* <Form.Group size="lg" controlId="state">
-  <Form.Label>state</Form.Label>
-  <Form.Control
-    type="text"
-    placeholder="state"
-    name="state"
-    onBlur={formik.handleBlur}
-    onChange={formik.handleChange}
-    value={formik.values.state}
-    className={
-      formik.errors.state && formik.touched.state
-        ? "form-control is-invalid state"
-        : "state"
-    }
-  />
-  {formik.errors.state ? (
-    <div className="invalid-feedback state">
-      {formik.errors.state}
-    </div>
-  ) : (
-    ""
-  )}
-</Form.Group>
-<Form.Group size="lg" controlId="usetype">
-  <Form.Label>user type</Form.Label>
-  <Form.Control
-    type="text"
-    placeholder="user type"
-    name="usetype"
-    onBlur={formik.handleBlur}
-    onChange={formik.handleChange}
-    value={formik.values.usetype}
-    className={
-      formik.errors.usetype && formik.touched.usetype
-        ? "form-control is-invalid usertype"
-        : "usertype"
-    }
-  />
-  {formik.errors.usetype ? (
-    <div className="invalid-feedback usertype">
-      {formik.errors.usetype}
-    </div>
-  ) : (
-    ""
-  )}
-</Form.Group> */}
 <Form.Group size="lg" controlId="state">
   <Form.Label>State:</Form.Label>
   
@@ -349,14 +296,11 @@ export default function Signup() {
 <br/>
 <Button block size="lg" href="/Login" type="button">Existing User? Login Now</Button> 
 
-{/* <Link to="/Login" className="btn btn-primary">Existing User? Login Now</Link> */}
 <br/><br/>
 <Form.Text className="text-muted" align="center">
          <Link to="/Signup/otpresend">RESEND OTP FOR VERIFICATION</Link>
             </Form.Text>
-{/* <Form.Text className="text-muted p-4">
-              RESEND <Link to="/otpresend">OTP FOR VERIFICATION</Link>
-</Form.Text> */}
+
 </Form>
 </div>
   );

@@ -30,7 +30,8 @@ const date= localStorage.getItem('date');
   const [rps, setrps] = useState(0);
   const [name, setname] = useState("");
   const [source, setsource] = useState("");
-  const [destination, setdestination,setno] = useState("");
+  const [destination, setdestination] = useState("");
+  const [no, setno] = useState("");
 
   useEffect(() => {
     setrps(fare1);

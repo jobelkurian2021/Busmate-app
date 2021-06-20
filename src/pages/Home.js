@@ -26,22 +26,24 @@ export default function Home() {
                 </div>
                 <div class="row">
                     <div class="col-xl-12">
-                        <form action="#" class="search-box">
+                        <form action="\Login" class="search-box">
                             <div class="input-form mb-30">
-                                <input type="text" placeholder="When Would you like to go ?" />
+                                <input type="text" placeholder="Where Would you like to go ?" />
                             </div>
-                            <div class="select-form mb-30">
+                            <div class=" input-form select-form mb-30">
                                 <div class="select-itms">
-                                    <select name="select" id="select1">
+                                <input type="date" placeholder="Select Date" />
+
+                                    {/* <select name="select" id="select1">
                                         <option value="">When</option>
                                         <option value="">Services-1</option>
                                         <option value="">Services-2</option>
                                         <option value="">Services-3</option>
-                                    </select>
+                                    </select> */}
                                 </div>
                             </div>
                             <div class="search-form mb-30">
-                                <a href="#">Search</a>
+                                <a href="\Login">Search</a>
                             </div>	
                         </form>	
                     </div>

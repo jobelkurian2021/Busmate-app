@@ -11,7 +11,7 @@ class CompanyNavbar extends Component {
         <header id="header" className="fixed-top"> 
         <div className="container d-flex align-items-center">
     
-          <h1 className="logo me-auto"><a href="/CompanyHome"><span>Bus</span>Mate </a></h1>
+          <h1 className="logo me-auto"><a href="/Company/Home"><span>Bus</span>Mate </a></h1>
          
           <nav id="navbar" className="navbar order-last order-lg-0">
             <ul>
@@ -29,12 +29,12 @@ class CompanyNavbar extends Component {
                       <li><a href="/Company/Allbus">View my Bus Schedules</a></li>
               </ul>
               </li>
-              <li className="dropdown"><a ><span>Ticket Bookings</span><i className="bi bi-chevron-down"></i></a>
+              <li className="dropdown"><a  href="/Company/Payments"><span>Ticket Bookings</span><i className="bi bi-chevron-down"></i></a>
               <ul>
                      
                     <li><a >Pending Transactions</a></li>
-                      <li><a href="/Customer/Payment/History">View All Transactions</a></li>
-                      <li><a href="/Customer/bill/History">Bill History</a></li>
+                      <li><a href="/Company/Payments">View All Transactions</a></li>
+                      <li><a href="/Company/Bills">Bill History</a></li>
               </ul>
               </li>
               <li className="dropdown">

@@ -51,12 +51,14 @@ import Clock from "./Clock";
 import Forgotpassword from "./Login/Forgotpassword";
 import Newpassword from "./Login/newpass";
 import Resendotp from "./Login/resendotp";
-
+import BusAdd from "./BusAdd";
 import BusCaller from "./booking/seats";
 import SeatDetails from "./booking/seats/seats";
 import { Companyroute } from "../components/routes/Company";
 import History from "../components/bill/History";
+import CBill from "./company/bill";
 import PHistory from "../components/invoice/History";
+import CPayHistory from "./company/History";
 
 export default function Routes() {
   return (
@@ -132,8 +134,17 @@ export default function Routes() {
         <Companyroute path="/Companyhome">
             <Companyhome />
         </Companyroute>
+        <Route exact path="/Company/Payments">
+            <CPayHistory />
+        </Route>
+        <Route exact path="/Company/Bills">
+            <CBill />
+        </Route>
         <Route exact path="/Company/NewSchedule">
             <NewSchedule />
+        </Route>
+        <Route exact path="/Company/BusAdd">
+            <BusAdd />
         </Route>
         <Route exact path="/Customerhome">
             <Customerhome />
@@ -174,6 +185,7 @@ export default function Routes() {
         <Route exact path="/Company/AddNewBus">
             <AddBus />
         </Route>
+ 
         <Route exact path="/Company/AddaBus">
             <AddaBus />
         </Route>

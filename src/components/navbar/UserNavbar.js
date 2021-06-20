@@ -78,15 +78,15 @@ changeTime() {
               
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
-            <div 
+            {/* <div 
           className="header-social-links d-flex"
           >
-          {/* <li><a >Welcome &nbsp;<span>{localStorage.getItem('name')}</span></a></li> */}
+           <li><a >Welcome &nbsp;<span>{localStorage.getItem('name')}</span></a></li> 
 
-          {/* </div>
-          <div className="header-social-links d-flex"> */}
+           </div>
+          <div className="header-social-links d-flex"> 
             <li><a >{this.state.date.toLocaleTimeString()}</a></li>
-        </div>
+        </div> */}
 
           </nav>
     

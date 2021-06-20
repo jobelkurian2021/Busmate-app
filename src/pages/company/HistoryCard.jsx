@@ -89,7 +89,7 @@ toast.success("Generated pdf",{
   draggable: true,
   progress: undefined,
 }); 
-window.location = "../../../Customer/Payment/History"
+window.location = "../../../Company/Payments"
   setspinner(true)
 }
     return (
@@ -109,6 +109,8 @@ window.location = "../../../Customer/Payment/History"
           <span> Total amount:: {data.totalprice} ||</span><br/>
           <span> No of passengers:: {data.noofpassengers} ||</span>
           <span> Payment ID:: {data.payementid} ||</span><br/>
+          <span> Total price:: {data.price} ||</span>
+
           <span> Total amount:: {data.totalprice} ||</span>
           <span> Travel DATE:: {data.date} ||</span>
         </Card.Text>

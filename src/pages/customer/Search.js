@@ -8,6 +8,15 @@ import UserNavbar from "../../components/navbar/UserNavbar";
 import { Redirect, withRouter } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import { getAllLocations } from "../../components/Utils/Requests/Location";
+import '../css/booking/animate.css';
+import '../css/booking/icomoon.css';
+import '../css/booking/themify-icons1.css';
+import '../css/booking/bootstrap.css';
+import '../css/booking/magnific-popup1.css';
+import '../css/booking/bootstrap-datepicker.min.css';
+import '../css/booking/owl.carousel.min.css';
+import '../css/booking/owl.theme.default.min.css';
+import '../css/style.css';
 
 class Search extends Component {
   state = {
@@ -100,15 +109,39 @@ class Search extends Component {
     const values= {locations};
 
     return (
-      <Layout title="Search">
-                		<UserNavbar />
+      // <Layout title="Search">
+                	
+               <header id="gtco-header" className="gtco-cover gtco-cover-md" role="banner" 
+        // style="background-image: url(images/img_bg_2.jpg)"
+        >
+          	<UserNavbar />
 
-        {showError(error)}
-        {showLoading(loading)}
-        {!loading && (
-          <>
-            <div className="form-group">
-              <label>Source</label>
+{showError(error)}
+{showLoading(loading)}
+{!loading && (
+  <>
+		<div className="overlay"></div>
+		<div className="gtco-container">
+			<div className="row">
+				<div className="col-md-12 col-md-offset-0 text-left">
+					
+
+		
+					<div className="row row-mt-15em">
+						<div className="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+							<h1>Planing Trip ? Book Now</h1>	
+              </div>
+						<div className="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+							<div className="form-wrap">
+								<div className="tab">
+									
+									<div className="tab-content">
+										<div className="tab-content-inner active" data-content="signup">
+											<h3>Book Your Trip</h3>
+        
+                      <div className="row form-group">
+													<div className="col-md-12">
+														<label for="source">Leaving From</label>
               {/* <input
                 type="text"
                 className="form-control"
@@ -133,8 +166,10 @@ class Search extends Component {
             ))}
           </select>
             </div>
-            <div className="form-group">
-              <label>Destination</label>
+            </div>
+            <div className="row form-group">
+													<div className="col-md-12">
+														<label for="destination">Going To</label>
               {/* <input
                 type="text"
                 className="form-control"
@@ -158,9 +193,11 @@ class Search extends Component {
               </option>
             ))}
           </select>
-            </div>
-            <div className="form-group">
-              <label>No of passengers:</label>
+          </div>
+												</div>
+                        <div className="row form-group">
+													<div className="col-md-12">
+														<label for="destination">No of passengers:</label>
               <select
                 // type="select"
                 className="form-control"
@@ -178,9 +215,11 @@ class Search extends Component {
               
               </select>
             </div>
+            </div>
            
-            <div className="form-group">
-              <label>date</label>
+            <div className="row form-group">
+													<div className="col-md-12">
+														<label for="date-start">Date of Travel</label>
               <input
                 type="date"
                 className="form-control"
@@ -189,16 +228,42 @@ class Search extends Component {
                 onChange={handleChange("date")}
                 value={date}
               />
+												</div>
             </div>
-            <button
+            <div className="row form-group">
+													<div className="col-md-12">
+                          <button
+              className="btn btn-success submit-form btn-block"
+              onClick={this.submit}
+            >
+              Search Bus
+            </button>								
+            					</div>
+												</div>
+            {/* <button
               className="btn btn-success submit-form"
               onClick={this.submit}
             >
               Search Bus
-            </button>
+            </button> */}
+            </div>
+
+										
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+
           </>
         )}
-      </Layout>
+      {/* </Layout> */}
+      </header>
     );
   }
 }

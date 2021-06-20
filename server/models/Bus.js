@@ -9,7 +9,7 @@ const busSchema = new mongoose.Schema(
     name: {
       type: String,
       trim: true,
-      required: true,
+      // required: true,
       maxlength: 32
     },
     type: {
@@ -19,13 +19,13 @@ const busSchema = new mongoose.Schema(
     busNumber: {
       type: String,
       trim: true,
-      required: true,
+      // required: true,
       maxlength: 32
     },
     fare: {
       type: Number,
       trim: true,
-      required: true,
+      // required: true,
       maxlength: 32
     },
     // features: {
