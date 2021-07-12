@@ -21,6 +21,9 @@ const email= localStorage.getItem("myemail");
 const no1= localStorage.getItem('no');
 const fare2 = fare1 * no1;
 const date= localStorage.getItem('date');
+const time= localStorage.getItem('time');
+const busname= localStorage.getItem('busname');
+const busno= localStorage.getItem('busno');
 
   let history = useHistory();
 
@@ -92,6 +95,9 @@ const date= localStorage.getItem('date');
           price:fare1,
           totalprice:fare2,
           date:date,
+          time:time,
+          busname:busname,
+          busno:busno,
           noofpassengers:no1,
           orderCreationId: order_id,
           razorpayPaymentId: response.razorpay_payment_id,

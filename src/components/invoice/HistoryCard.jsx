@@ -21,6 +21,10 @@ const source = data.source;
 const destination =data.destination;
 const payementid = data.payementid;
 const payorderid = data.payorderid;
+const busno = data.busno;
+const time = data.time;
+const busname = data.busname;
+
 // const noofpassengers= data.noofpassengers;
 
 
@@ -58,16 +62,16 @@ var data = {
  "sender": {
      "company": "Busmate",
      "address": "Chengalam,kottayam",
-     "zip": "686022",
-     "city": "Kerala",
-     "country": "India"
+     "zip": busname,
+     "city": busno,
+     "country": date 
  },
  "client": {
    
    "company": email,
    "address": source,
    "zip": destination,
-   "city": date,
+   "city": time,
    "country": payementid
  },
 "invoiceNumber": Date.now(),
@@ -105,12 +109,15 @@ window.location = "../../../Customer/Payment/History"
         <span> Order ID:: {data.payorderid} ||</span>
         <span> Email:: {data.email} ||</span><br/>
          <span> Source:: {data.source} ||</span>
-          <span> Destination:: {data.destination} ||</span>
-          <span> Total amount:: {data.totalprice} ||</span><br/>
+          <span> Destination:: {data.destination} ||</span><br/>
+          <span> Travels Name:: {data.busname} ||</span>
+          <span> Bus Number:: {data.busno} ||</span><br/>
+          <span> Travel DATE:: {data.date} ||</span>
+          <span> Departure Time:: {data.time} ||</span>
+          <span> Per Ticket:: {data.price} ||</span><br/>
           <span> No of passengers:: {data.noofpassengers} ||</span>
           <span> Payment ID:: {data.payementid} ||</span><br/>
           <span> Total amount:: {data.totalprice} ||</span>
-          <span> Travel DATE:: {data.date} ||</span>
         </Card.Text>
         <Button variant="danger" onClick={()=>generate()}>{spinner ?"Generate Pdf":<Spinner animation="border" />}<FaFilePdf/> </Button>
       </Card.Body>

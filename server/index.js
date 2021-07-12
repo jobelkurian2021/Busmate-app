@@ -475,6 +475,10 @@ app.put("/api/billsubmit",async (req,resp) => {
                                                 "source":req.body.source,
                                                 "destination":req.body.destination,
                                                 "noofpassengers":req.body.noofpassengers,
+                                                "date":req.body.date,
+                                                "time":req.body.time,
+                                                "busname":req.body.busname,
+                                                "busno":req.body.busno,
                                               })
                                             // }
                                             // };
@@ -491,7 +495,7 @@ app.put("/api/billsubmit",async (req,resp) => {
                                                 (updatedDocument2) => {
                                                 if(updatedDocument2) {
                                                 res.status(200).json({
-                                                  msg: "successfully payed",
+                                                  msg: "successfully paid",
                                                   orderId: req.body.razorpayOrderId,
                                                   paymentId: req.body.razorpayPaymentId,
                                                   user:req.body.email,

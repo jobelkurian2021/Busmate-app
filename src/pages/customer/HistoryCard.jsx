@@ -35,6 +35,9 @@ const handlepage=(Rows)=>{
      localStorage.setItem('source', data.startLocation);
       localStorage.setItem('destination', data.endLocation);
       localStorage.setItem('fare',data.fare);
+      localStorage.setItem('time',data.departure_time);
+      localStorage.setItem('busname',data.name);
+      localStorage.setItem('busno',data.busNumber);
 
   history.push({pathname:"/payment",busname:"{data.name}",source:"{data.startLocation}",destination:"{data.endLocation}",fare:"{data.fare}",reqid:"novalue"})
 
@@ -49,12 +52,14 @@ const handlepage=(Rows)=>{
       <Card.Body className="p-2">
         {/* <Card.Title className="p-1">Bus Details</Card.Title> */}
         <Card.Text className="text-center">
-        <span> Bus Name:: {data.name} ||</span>
-        <span> Bus type:: {data.type} ||</span><br/>
+        <span> Bus Name:: {data.name} ||</span> 
+        <span> Bus No:: {data.busNumber} ||</span><br/>
+
+        <span> Bus type:: {data.type} ||</span>
          <span> Source:: {data.startLocation} ||</span>
-          <span> Destination:: {data.endLocation} ||</span>
+          <span> Destination:: {data.endLocation} ||</span> <br/>
           <span> Seats Available:: {data.numberOfSeats} ||</span><br/>
-          <span> Boarding Points:: {data.boardingPoints} ||</span>
+          <span> Boarding Points:: {data.boardingPoints} ||</span><br/>
           <span> Dropping Points:: {data.droppingPoints} ||</span>
           {/* <span> Additional Features:: {data.features} ||</span> */}
           <br/>

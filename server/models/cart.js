@@ -35,6 +35,15 @@ const cart1 = new mongoose.Schema({
         type:Date,
         default:Date.now
     },
+    busname:{
+        type:String
+    },
+    busno:{
+        type:String
+    },
+    time:{
+        type:String
+    },
     status:{
         type:String
     },
